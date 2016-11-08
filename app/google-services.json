@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "12191957123",
+    "firebase_url": "https://allergyiap.firebaseio.com",
+    "project_id": "allergyiap",
+    "storage_bucket": "allergyiap.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:12191957123:android:2934717782850efb",
+        "android_client_info": {
+          "package_name": "com.allergyiap"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "12191957123-9mc9otvd9edu0he4n1joar1oo4vrbsgr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiSB8O2CPMRZRAAmIARgVZ86lFWX23RnU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
