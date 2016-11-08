@@ -4,7 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import com.allergyiap.R;
 
-public class ProductCatalogActivity extends AppCompatActivity {
+public class ProductCatalogActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

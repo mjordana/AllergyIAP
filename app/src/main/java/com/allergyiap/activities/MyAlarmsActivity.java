@@ -4,7 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import com.allergyiap.R;
 
-public class MyAlarmsActivity extends AppCompatActivity {
+public class MyAlarmsActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

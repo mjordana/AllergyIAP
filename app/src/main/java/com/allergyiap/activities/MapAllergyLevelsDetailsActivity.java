@@ -4,7 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import com.allergyiap.R;
 
-public class MapAllergyLevelsDetailsActivity extends AppCompatActivity {
+public class MapAllergyLevelsDetailsActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

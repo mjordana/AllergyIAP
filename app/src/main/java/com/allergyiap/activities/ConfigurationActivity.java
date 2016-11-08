@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import com.allergyiap.R;
 
-public class ConfigurationActivity extends AppCompatActivity {
+public class ConfigurationActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
