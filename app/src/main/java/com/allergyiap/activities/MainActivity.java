@@ -6,7 +6,7 @@ import android.view.View;
 
 import com.allergyiap.R;
 
-public class MainActivity extends BaseActivity implements View.OnClickListener {
+public class MainActivity extends BaseActivity {
 
     private static final String TAG = "MainActivity";
 
@@ -14,25 +14,23 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
     }
 
-    @Override
-    public void onClick(View v) {
+    public void onClickMap(View v) {
+        startActivity(new Intent(this, MapActivity.class));
+    }
 
-        switch (v.getId()) {
-            case R.id.ibtn_map:
-                startActivity( new Intent(this, MapActivity.class));
-                break;
-            case R.id.ibtn_product:
-                startActivity( new Intent(this, ProductCatalogActivity.class));
-                break;
-            case R.id.ibtn_config:
-                startActivity( new Intent(this, ConfigurationActivity.class));
-                break;
-            case R.id.ibtn_alarms:
-                startActivity( new Intent(this, MyAlarmsActivity.class));
-                break;
-        }
+    public void onClickProductCatalog(View v) {
+        startActivity(new Intent(this, ProductCatalogActivity.class));
+    }
 
+    public void onClickConfiguration(View v) {
+        startActivity(new Intent(this, ConfigurationActivity.class));
+    }
+
+    public void onClickMyAlarms(View v) {
+        startActivity(new Intent(this, MyAlarmsActivity.class));
     }
 }

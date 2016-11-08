@@ -31,10 +31,10 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".activities.MapActivity" />
-        <activity android:name=".activities.ProductCatalogActivity" />
-        <activity android:name=".activities.MyAlarmsActivity" />
-        <activity android:name=".activities.ConfigurationActivity" />
+        <activity android:name=".activities.MapActivity" android:label="@string/map_name"/>
+        <activity android:name=".activities.ProductCatalogActivity" android:label="@string/product_catalog_name"/>
+        <activity android:name=".activities.MyAlarmsActivity" android:label="@string/my_alarms_name"/>
+        <activity android:name=".activities.ConfigurationActivity" android:label="@string/configuration_name"/>
         <activity android:name=".activities.MapAllergyLevelsActivity" />
         <activity android:name=".activities.MapAllergyLevelsDetailsActivity"></activity>
     </application>

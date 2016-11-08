@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">AllergyIAP</string>
+    <string name="map_name">AllergyIAP Map</string>
+    <string name="product_catalog_name">Product Catalog</string>
+    <string name="configuration_name">Configuration</string>
+    <string name="my_alarms_name">My Alarms</string>
 </resources>
