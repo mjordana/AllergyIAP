@@ -23,7 +23,8 @@
             app:srcCompat="@drawable/cast_album_art_placeholder"
             android:id="@+id/ibtn_map"
             android:layout_weight="0.59"
-            android:onClick="onClickMap" />
+            android:onClick="onClickMap"
+             />
 
         <ImageButton
             android:layout_width="match_parent"
