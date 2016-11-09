@@ -4,4 +4,6 @@
     <string name="product_catalog_name">Product Catalog</string>
     <string name="configuration_name">Configuration</string>
     <string name="my_alarms_name">My Alarms</string>
+    <string name="map_level">Map Level</string>
+    <string name="map_level_details">Map Level Details</string>
 </resources>
