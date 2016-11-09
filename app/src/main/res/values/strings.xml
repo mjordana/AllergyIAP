@@ -6,4 +6,11 @@
     <string name="my_alarms_name">My Alarms</string>
     <string name="map_level">Map Level</string>
     <string name="map_level_details">Map Level Details</string>
+
+
+    <!-- Menu buttons mainactivity -->
+    <string name="menu_map">Map</string>
+    <string name="menu_alarms">Alarm</string>
+    <string name="menu_config">Config</string>
+    <string name="menu_product">Product</string>
 </resources>
