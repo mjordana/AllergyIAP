@@ -6,13 +6,21 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:dialogTheme">@style/AlertsTheme</item>
+    </style>
+
+    <style name="AlertsTheme" parent="@style/Theme.AppCompat.Light.Dialog">
+        <!--<item name="android:windowBackground">@color/colorAccent</item>-->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
     </style>
 
     <style name="Theme"
         parent="AppTheme">
 
-        <item name="android:dialogTheme">@style/AppTheme</item> <!-- TimePicker dialog -->
-        <item name="android:alertDialogTheme">@style/AppTheme</item> <!-- Alert dialog -->
+        <item name="android:dialogTheme">@color/colorPrimary</item> <!-- TimePicker dialog -->
+        <item name="android:alertDialogTheme">@color/colorPrimary</item> <!-- Alert dialog -->
 
     </style>
 

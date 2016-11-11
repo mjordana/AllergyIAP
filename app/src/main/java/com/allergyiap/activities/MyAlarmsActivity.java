@@ -20,6 +20,7 @@ import android.widget.TimePicker;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collections;
 
 public class MyAlarmsActivity extends BaseActivity {
 
@@ -41,9 +42,9 @@ public class MyAlarmsActivity extends BaseActivity {
                 // arraylist to keep the selected items
                 final ArrayList seletedItems=new ArrayList();
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+                AlertDialog.Builder builder = new AlertDialog.Builder (v.getContext(),R.style.AlertsTheme);
                 builder.setTitle("Select the days of the week");
-                builder.setMultiChoiceItems(items, null,
+                builder.setMultiChoiceItems (items, null,
                         new DialogInterface.OnMultiChoiceClickListener() {
                             // indexSelected contains the index of item (of which checkbox checked)
                             @Override
@@ -62,16 +63,40 @@ public class MyAlarmsActivity extends BaseActivity {
                         })
                         // Set the action buttons
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            String result;
+                            String result ="";
                             String myText;
                             @Override
                             public void onClick(DialogInterface dialog, int id) {
-                              //  for (int i=0; i<seletedItems.size();i++) {
-                               //     result += Arrays.toString(ArraysseletedItems.toArray());
-
-                              //  }
-                              //  button.setText( result);
-
+                                Collections.sort(seletedItems);
+                                for (int i=0; i<seletedItems.size();i++) {
+                                    switch ((int)seletedItems.get(i)){
+                                        case 0:
+                                            result+=" Mo ";
+                                            break;
+                                        case 1:
+                                            result+=" Tu ";
+                                            break;
+                                        case 2:
+                                            result+=" W ";
+                                            break;
+                                        case 3:
+                                            result+=" Th ";
+                                            break;
+                                        case 4:
+                                            result+=" Fr ";
+                                            break;
+                                        case 5:
+                                            result+=" Sa ";
+                                            break;
+                                        case 6:
+                                            result+=" Su ";
+                                        break;
+                                        default:
+                                            result="";
+                                            break;
+                                    }
+                                }
+                                button.setText( result);
                             }
                         })
                         .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -94,10 +119,10 @@ public class MyAlarmsActivity extends BaseActivity {
                 Calendar mcurrentTime = Calendar.getInstance();
                 int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
                 int minute = mcurrentTime.get(Calendar.MINUTE);
-                mTimePicker = new TimePickerDialog(MyAlarmsActivity.this,R.style.AppTheme, new TimePickerDialog.OnTimeSetListener() {
+                mTimePicker = new TimePickerDialog(MyAlarmsActivity.this,R.style.AlertsTheme, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                        button2.setText( selectedHour + ":" + selectedMinute);
+                        button2.setText( selectedHour + ":" + String.format("%02d", selectedMinute));
                     }
                 }, hour, minute, true);//Yes 24 hour time
                 mTimePicker.setTitle("Select Time");
