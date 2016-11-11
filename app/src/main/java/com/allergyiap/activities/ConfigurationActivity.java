@@ -17,6 +17,7 @@ public class ConfigurationActivity extends BaseActivity {
         setContentView(R.layout.activity_configuration);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
+
     public void onClickSaveChanges(View v){
         Toast teste = Toast.makeText(getApplicationContext(), "Changes correctly saved", Toast.LENGTH_LONG);
         teste.show();
