@@ -44,7 +44,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/enableSoundEnable"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:checked="false" />
 
         <Switch
             android:text="Allow alert mails"
@@ -149,7 +150,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/buttonChanges"
             android:layout_gravity="center_vertical|center_horizontal"
-            android:onClick="onClickSaveChanges" />
+            android:onClick="onClickSaveChanges " />
 
     </LinearLayout>
 </RelativeLayout>
