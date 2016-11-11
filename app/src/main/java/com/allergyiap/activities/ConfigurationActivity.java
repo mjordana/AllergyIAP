@@ -14,8 +14,8 @@ public class ConfigurationActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuration);
     }
-    public void onClickOk(View v){
-        Toast teste = Toast.makeText(getApplicationContext(), "teste", Toast.LENGTH_LONG);
+    public void onClickSaveChanges(View v){
+        Toast teste = Toast.makeText(getApplicationContext(), "Changes correctly saved", Toast.LENGTH_LONG);
         teste.show();
 
     }
