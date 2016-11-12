@@ -12,19 +12,6 @@
         tools:context="com.allergyiap.activities.MyAlarmsActivity"
     android:weightSum="1">
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <CheckBox
-            android:text="Alarm Notification"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/checkBox2" />
-
-    </LinearLayout>
-
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -36,11 +23,25 @@
                 style="?android:attr/listSeparatorTextViewStyle" />
 
         </LinearLayout>
-    <View android:layout_width="match_parent"
+    <View android:layout_width="wrap_content"
         android:layout_height="1dp"
         android:padding="5dp"
         android:background="@android:color/darker_gray">
     </View>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <CheckBox
+            android:text="Alarm Notification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox2"
+            android:onClick="onCheckboxClicked"/>
+
+    </LinearLayout>
 
 <LinearLayout
         android:orientation="horizontal"
@@ -67,5 +68,65 @@
             android:layout_height="wrap_content"
             android:layout_width="match_parent" />
     </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Automatic"
+            style="?android:attr/listSeparatorTextViewStyle" />
+    </LinearLayout>
+
+    <View android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:padding="5dp"
+        android:background="@android:color/darker_gray">
+    </View>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <CheckBox
+        android:text="Notify only when the level increase"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/checkBox3" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Allergies to notify"
+            style="?android:attr/listSeparatorTextViewStyle" />
+
+    </LinearLayout>
+    <View android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:padding="5dp"
+        android:background="@android:color/darker_gray">
+    </View>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:drawableTop="@drawable/ic_flower"
+            android:id="@+id/allergy"
+            android:text="@string/allergy"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent" />
+    </LinearLayout>
+
 
 </LinearLayout>

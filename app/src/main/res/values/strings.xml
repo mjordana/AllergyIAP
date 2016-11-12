@@ -17,4 +17,5 @@
     <!-- Activity my alarms -->
     <string name="days">Days of week</string>
     <string name="hour">Hour</string>
+    <string name="allergy">Allergies</string>
 </resources>
