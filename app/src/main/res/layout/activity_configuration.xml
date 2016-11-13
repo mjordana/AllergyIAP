@@ -10,23 +10,147 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.allergyiap.activities.ConfigurationActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/textView" />
+
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:weightSum="1"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/xcvxzcv">
 
-        <CheckBox
-            android:text="Recibir alertas"
+        <TextView
+            android:text="System configuration"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/checkBox" />
+            android:id="@+id/textView4"
+            android:textStyle="normal|bold"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            android:layout_weight="0.06" />
+
+        <Switch
+            android:text="Enable sounds"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/enableSoundEnable"
+            android:textSize="16sp"
+            android:checked="false" />
+
+        <Switch
+            android:text="Allow alert mails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/switch3"
+            android:textSize="16sp" />
+
+        <Switch
+            android:text="Another switch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/switch4"
+            android:textSize="16sp" />
+
+        <TextView
+            android:text="User profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView2"
+            android:layout_weight="0.11"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            android:textStyle="normal|bold" />
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:hint="Name"
+            android:ems="10"
+            android:id="@+id/editText2"
+            android:layout_weight="0.06" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:ems="10"
+            android:id="@+id/editText3"
+            android:layout_weight="0.06"
+            android:hint="E-mail"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/editText5"
+            android:layout_weight="0.06"
+            android:hint="Password" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPostalAddress"
+            android:ems="10"
+            android:id="@+id/editText4"
+            android:layout_weight="0.06"
+            android:hint="City" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/editText7"
+            android:layout_weight="0.06"
+            android:hint="Postal code" />
+
+        <TextView
+            android:text="Application information"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView6"
+            android:layout_weight="0.06"
+            android:textStyle="normal|bold"
+            android:textSize="18sp"
+            android:textAlignment="center" />
+
+        <TextView
+            android:text="Application Version"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView7"
+            android:layout_weight="0.06"
+            android:textSize="16sp"
+            android:textStyle="normal|bold" />
+
+        <TextView
+            android:text="0.1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView8"
+            android:layout_weight="0.06"
+            android:textSize="16sp" />
 
         <Button
-            android:text="Button"
-            android:layout_width="match_parent"
+            android:text="Save changes"
+            android:layout_width="145dp"
             android:layout_height="wrap_content"
-            android:id="@+id/button2"
-            android:onClick="onClickOk" />
+            android:id="@+id/buttonChanges"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:onClick="onClickSaveChanges" />
 
     </LinearLayout>
 </RelativeLayout>
