@@ -30,15 +30,15 @@ public class MainActivity extends BaseActivity {
         CardView config = (CardView) (findViewById(R.id.linear_config)).findViewById(R.id.cardlist_item);
         CardView product = (CardView) (findViewById(R.id.linear_product)).findViewById(R.id.cardlist_item);
 
-        map.setCardBackgroundColor(getResources().getColor(R.color.teal));
-        alarms.setCardBackgroundColor(getResources().getColor(R.color.cyan));
-        config.setCardBackgroundColor(getResources().getColor(R.color.blue_grey));
-        product.setCardBackgroundColor(getResources().getColor(R.color.lime));
+        map.setCardBackgroundColor(getResources().getColor(R.color.red));
+        alarms.setCardBackgroundColor(getResources().getColor(R.color.blue));
+        config.setCardBackgroundColor(getResources().getColor(R.color.green));
+        product.setCardBackgroundColor(getResources().getColor(R.color.purple));
 
-        ((ImageView)map.findViewById(R.id.menu_image)).setImageResource(R.drawable.icon_map);
-        //((ImageView)alarms.findViewById(R.id.menu_image)).setImageResource(getResources().getDrawable(R.drawable.alarms));
-        //((ImageView)config.findViewById(R.id.menu_image)).setImageResource(getResources().getDrawable(R.drawable.config));
-        //((ImageView)product.findViewById(R.id.menu_image)).setImageResource(getResources().getDrawable(R.drawable.product));
+        ((ImageView)map.findViewById(R.id.menu_image)).setImageResource(R.drawable.map);
+        ((ImageView)alarms.findViewById(R.id.menu_image)).setImageResource(R.drawable.alarm);
+        ((ImageView)config.findViewById(R.id.menu_image)).setImageResource(R.drawable.config);
+        ((ImageView)product.findViewById(R.id.menu_image)).setImageResource(R.drawable.product_catalog);
 
         ((TextView) map.findViewById(R.id.menu_name)).setText(getResources().getString(R.string.menu_map));
         ((TextView) alarms.findViewById(R.id.menu_name)).setText(getResources().getString(R.string.menu_alarms));

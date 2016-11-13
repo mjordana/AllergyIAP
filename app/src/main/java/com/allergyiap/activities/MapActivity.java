@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -15,6 +16,9 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.allergyiap.R;
+import com.allergyiap.entities.AllergyEntity;
+import com.allergyiap.entities.StationEntity;
+import com.allergyiap.utils.C;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -23,6 +27,10 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class MapActivity extends BaseActivity implements OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener, GoogleMap.InfoWindowAdapter {
 
@@ -33,6 +41,10 @@ public class MapActivity extends BaseActivity implements OnMapReadyCallback, Goo
     private LocationManager locationManager;
     private Location location;
 
+    private List<StationEntity> stations;
+    private HashMap<String, StationEntity> allergies;
+
+    private List<Integer> riskColors;
 
 
     @Override
@@ -45,29 +57,7 @@ public class MapActivity extends BaseActivity implements OnMapReadyCallback, Goo
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        locationManager = (LocationManager) this.getSystemService(context.LOCATION_SERVICE);
-        /*LocationListener locationListener = new LocationListener() {
-            @Override
-            public void onLocationChanged(Location location) {
-                Log.e(TAG, "" + location.getLatitude() + " " + location.getLongitude());
-                createMarker(location.getLatitude(), location.getLongitude());
-            }
-
-            @Override
-            public void onStatusChanged(String s, int i, Bundle bundle) {
-
-            }
-
-            @Override
-            public void onProviderEnabled(String s) {
-
-            }
-
-            @Override
-            public void onProviderDisabled(String s) {
-
-            }
-        };*/
+        /*locationManager = (LocationManager) this.getSystemService(context.LOCATION_SERVICE);
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -87,7 +77,24 @@ public class MapActivity extends BaseActivity implements OnMapReadyCallback, Goo
             Toast.makeText(this, "requestLocationUpdates", Toast.LENGTH_LONG).show();
             //locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
             location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        }
+        }*/
+
+        initStationsAllergies();
+        riskColors = new ArrayList<>();
+        riskColors.add(getResources().getColor(R.color.blue));
+        riskColors.add(getResources().getColor(R.color.green));
+        riskColors.add(getResources().getColor(R.color.yellow));
+        riskColors.add(getResources().getColor(R.color.orange));
+        riskColors.add(getResources().getColor(R.color.red));
+    }
+
+    private void initStationsAllergies() {
+        stations = new ArrayList<>();
+        allergies = new HashMap<>();
+
+        stations.add(new StationEntity(1, "Lleida", 41.628333, 0.595556));
+        stations.add(new StationEntity(2, "Manresa", 41.720183, 1.839867));
+        stations.add(new StationEntity(3, "Barcelona", 41.393728, 2.164922));
     }
 
     @Override
@@ -112,17 +119,19 @@ public class MapActivity extends BaseActivity implements OnMapReadyCallback, Goo
         }
     }
 
-    private void createMarker(double latitude, double longitude, String title) {
+    private String createMarker(double latitude, double longitude, String title) {
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(latitude, longitude);
+        LatLng pos = new LatLng(latitude, longitude);
         Marker marker = mMap.addMarker(new MarkerOptions()
-                .position(sydney)
+                .position(pos)
                 .title(title)
-                .draggable(true)
+                .draggable(false)
                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(pos));
 
-        marker.showInfoWindow();
+        return marker.getId();
+
+        //marker.showInfoWindow();
     }
 
     @Override
@@ -131,16 +140,31 @@ public class MapActivity extends BaseActivity implements OnMapReadyCallback, Goo
         mMap.setOnInfoWindowClickListener(this);
         mMap.setInfoWindowAdapter(this);
 
-        if(location != null) {
+        /*if(location != null) {
             createMarker(location.getLatitude(), location.getLongitude(), "Actual position");
         } else {
             createMarker(41.6167, 0.6333, "lleida");
+        }*/
+
+        for (StationEntity s : stations) {
+            String id = createMarker(s.latitude, s.longitude, s.city);
+            allergies.put(id, s);
         }
     }
 
+
     @Override
     public void onInfoWindowClick(Marker marker) {
-        startActivity(new Intent(this, MapAllergyLevelsActivity.class));
+
+        String id = marker.getId();
+
+        StationEntity s = allergies.get(id);
+
+        Intent intent = new Intent(this, MapAllergyLevelsActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(C.IntentExtra.Sender.VAR_ALLERGY, s.id);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 
     /**
@@ -161,4 +185,6 @@ public class MapActivity extends BaseActivity implements OnMapReadyCallback, Goo
     public View getInfoContents(Marker marker) {
         return null;
     }
+
+
 }

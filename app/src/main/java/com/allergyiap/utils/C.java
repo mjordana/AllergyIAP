@@ -115,6 +115,9 @@ public final class C {
         public static final class Sender {
             // Extra name
             public static final String EXTRA_NAME = appPkg + ".intent_sender";
+
+            public static final String VAR_ALLERGY = appPkg + ".allergy_id";
+            public static final String VAR_ALLERGY2 = appPkg + ".allergy_object";
         }
     }
 

@@ -18,4 +18,23 @@
     <string name="days">Days of week</string>
     <string name="hour">Hour</string>
     <string name="allergy">Allergies</string>
+
+
+    <!-- Activity MapAllergyLevelsDetails-->
+    <string name="group_description">Description</string>
+    <string name="group_diseases">Diseases</string>
+    <string name="group_medicament">Medicament</string>
+
+    <string name="description_example">
+        The Urticaceae /ɜːrtᵻˈkeɪsiː/ are a family, the nettle family, of flowering plants. The family name comes from the genus Urtica. The Urticaceae include a number of well-known and useful plants, including the nettles, ramie (Boehmeria nivea), māmaki (Pipturus albidus), and ajlai (Debregeasia saeneb). The family includes about 2625 species, grouped into 53 genera according to the database of the Royal Botanic Gardens, Kew and Christenhusz and Byng (2016).[2] The largest genera are Pilea (500 to 715 species), Elatostema (300 species), Urtica (80 species), and Cecropia (75 species). Urticaceae species can be found worldwide, apart from the polar regions.
+    </string>
+
+    <string name="disease_example">
+        Urticaceae species can be shrubs (e.g. Pilea), lianas, herbs (e.g. Urtica, Parietaria), or, rarely, trees (Dendrocnide, Cecropia). Their leaves are usually entire and bear stipules. Urticating (stinging) hairs are often present. They have usually unisexual flowers and can be both monoecious or dioecious. They are wind-pollinated. Most disperse their pollen when the stamens are mature and their filaments straighten explosively, a peculiar and conspicuously specialised mechanism.
+    </string>
+
+    <string name="medicament_example">
+        Antihistamines and corticosteroids are the most frequently used treatments to combat the various manifestations of allergy. Depending on the severity of your symptoms and the resulting discomfort, you will favor one or the other.
+    </string>
+
 </resources>

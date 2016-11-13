@@ -3,6 +3,14 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
-
     <dimen name="cardview_menu_corners_radius">8dp</dimen>
+    <dimen name="cardview_list_company_height">70dp</dimen>
+
+    <dimen name="catalog_image_small_width">60dp</dimen>
+    <dimen name="catalog_image_small_padding">5dp</dimen>
+
+    <dimen name="legend_level_allergy_size">25dp</dimen>
+
+    <dimen name="icon_info_width">25dp</dimen>
+
 </resources>
