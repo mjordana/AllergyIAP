@@ -56,10 +56,10 @@ public class ProductCatalogActivity extends BaseActivity {
 
     private void createArray() {
         catalogs = new ArrayList<>();
-        catalogs.add(new CatalogEntity(1,"Abedul","0 - 40 g/m","https://s13.postimg.org/xyzjxw45z/download_1.jpg"));
-        catalogs.add(new CatalogEntity(1,"Cupresaceas","0 - 50 g/m","https://s22.postimg.org/vi6o9xd29/Juniperus_chinensis6.jpg"));
-        catalogs.add(new CatalogEntity(1,"Gramineas","0 - 10 g/m","https://s13.postimg.org/g3cz7nq7b/54e_Poaceae.jpg"));
-        catalogs.add(new CatalogEntity(1,"Olivo","0 - 100 g/m","https://s11.postimg.org/6ndg0fosz/el_olivo_21.jpg"));
+        catalogs.add(new CatalogEntity(1,"Nasal Steroids","These are drugs you spray into your nose","http://www.krishnaherbals.com/images/allergy-care-zoom.jpg"));
+        catalogs.add(new CatalogEntity(1,"Antihistamines","These drugs work against the chemical histamine","http://www.alwaysayurveda.com/wp-content/uploads/2013/05/Arjuna1.png"));
+        catalogs.add(new CatalogEntity(1,"Decongestants","These drugs unclog your stuffy nose","http://www.anytimeherbal.com/images/arjuna.gif"));
+        catalogs.add(new CatalogEntity(1,"Anthipollen","These drugs unclog your stuffy nose","http://www.anytimeherbal.com/images/arjuna.gif"));
     }
 
     private void loadData() {
