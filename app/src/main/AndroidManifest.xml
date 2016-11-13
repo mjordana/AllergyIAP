@@ -4,7 +4,7 @@
 
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <!-- Needed only if your app targets Android 5.0 (API level 21) or higher. -->
     <uses-feature android:name="android.hardware.location.gps" />
 
@@ -15,12 +15,16 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.MainActivity">
+        <activity android:name=".activities.LaunchScreenActivity"
+            android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity android:name=".activities.MainActivity">
         </activity>
 
         <service android:name=".utils.FCMService">
@@ -38,12 +42,30 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".activities.MapActivity" android:label="@string/map_name"/>
-        <activity android:name=".activities.ProductCatalogActivity" android:label="@string/product_catalog_name"/>
-        <activity android:name=".activities.MyAlarmsActivity" android:label="@string/my_alarms_name"/>
-        <activity android:name=".activities.ConfigurationActivity" android:label="@string/configuration_name"/>
-        <activity android:name=".activities.MapAllergyLevelsActivity" android:label="@string/map_level"/>
-        <activity android:name=".activities.MapAllergyLevelsDetailsActivity" android:label="@string/map_level_details"></activity>
+        <activity
+            android:name=".activities.MapActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/map_name" />
+        <activity
+            android:name=".activities.ProductCatalogActivity"
+            android:label="@string/product_catalog_name"
+            android:configChanges="orientation|screenSize"/>
+        <activity
+            android:name=".activities.MyAlarmsActivity"
+            android:label="@string/my_alarms_name"
+            android:configChanges="orientation|screenSize"/>
+        <activity
+            android:name=".activities.ConfigurationActivity"
+            android:label="@string/configuration_name"
+            android:configChanges="orientation|screenSize"/>
+        <activity
+            android:name=".activities.MapAllergyLevelsActivity"
+            android:label="@string/map_level"
+            android:configChanges="orientation|screenSize"/>
+        <activity
+            android:name=".activities.MapAllergyLevelsDetailsActivity"
+            android:label="@string/map_level_details"
+            android:configChanges="orientation|screenSize"></activity>
     </application>
 
 </manifest>
