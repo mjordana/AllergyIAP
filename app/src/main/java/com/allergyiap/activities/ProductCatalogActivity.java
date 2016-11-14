@@ -1,5 +1,6 @@
 package com.allergyiap.activities;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -9,9 +10,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.allergyiap.R;
-import com.allergyiap.adapters.AllergiesAdapter;
 import com.allergyiap.adapters.CatalogAdapter;
-import com.allergyiap.entities.AllergyEntity;
 import com.allergyiap.entities.CatalogEntity;
 
 import java.util.ArrayList;
@@ -80,6 +79,8 @@ public class ProductCatalogActivity extends BaseActivity {
 
             @Override
             public void onItemClick(View view, int position, CatalogEntity catalogEntity) {
+                //setContentView(R.layout.product_info);
+                startActivity(new Intent(context, ProductCatalogMapActivity.class));
 
             }
         });
