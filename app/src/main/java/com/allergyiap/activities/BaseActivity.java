@@ -5,6 +5,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.WindowManager;
 
 import com.allergyiap.R;
@@ -29,6 +30,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         context = getApplicationContext();
 
         updateLocale();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // transparent toolbar android
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -55,5 +57,14 @@ public abstract class BaseActivity extends AppCompatActivity {
             Log.e("BaseActivity.onCreate","Set Language Exception: "+e.getMessage());
             Prefs.getInstance(context).setLanguage(C.Lang.LANG_EN);
         }
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
