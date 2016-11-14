@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AllergyIAP</string>
+    <string name="map_name">Allergy Map</string>
+    <string name="product_catalog_name">Catalogo de productos</string>
+    <string name="configuration_name">Configuración</string>
+    <string name="my_alarms_name">Mis alarmas</string>
+    <string name="map_level">Mapa de niveles</string>
+    <string name="map_level_details">Detalles de los niveles</string>
+
+
+    <!-- Menu buttons mainactivity -->
+    <string name="menu_map">Mapa de alergia</string>
+    <string name="menu_alarms">Mis alarmas</string>
+    <string name="menu_config">Configuracion</string>
+    <string name="menu_product">Catalogo de productos</string>
+
+    <!-- Activity my alarms -->
+    <string name="days">Dias de la semana</string>
+    <string name="hour">Hora</string>
+    <string name="allergy">Allergias</string>
+
+
+    <!-- Activity MapAllergyLevelsDetails-->
+    <string name="group_description">Descripcion</string>
+    <string name="group_diseases">Diseases</string>
+    <string name="group_medicament">Medicamento</string>
+
+    <string name="description_example">
+        The Urticaceae /ɜːrtᵻˈkeɪsiː/ are a family, the nettle family, of flowering plants. The family name comes from the genus Urtica. The Urticaceae include a number of well-known and useful plants, including the nettles, ramie (Boehmeria nivea), māmaki (Pipturus albidus), and ajlai (Debregeasia saeneb). The family includes about 2625 species, grouped into 53 genera according to the database of the Royal Botanic Gardens, Kew and Christenhusz and Byng (2016).[2] The largest genera are Pilea (500 to 715 species), Elatostema (300 species), Urtica (80 species), and Cecropia (75 species). Urticaceae species can be found worldwide, apart from the polar regions.
+    </string>
+
+    <string name="disease_example">
+        Urticaceae species can be shrubs (e.g. Pilea), lianas, herbs (e.g. Urtica, Parietaria), or, rarely, trees (Dendrocnide, Cecropia). Their leaves are usually entire and bear stipules. Urticating (stinging) hairs are often present. They have usually unisexual flowers and can be both monoecious or dioecious. They are wind-pollinated. Most disperse their pollen when the stamens are mature and their filaments straighten explosively, a peculiar and conspicuously specialised mechanism.
+    </string>
+
+    <string name="medicament_example">
+        Antihistamines and corticosteroids are the most frequently used treatments to combat the various manifestations of allergy. Depending on the severity of your symptoms and the resulting discomfort, you will favor one or the other.
+    </string>
+
+</resources>
