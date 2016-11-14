@@ -2,6 +2,7 @@ package com.allergyiap.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.ImageView;
@@ -9,9 +10,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.allergyiap.R;
-import com.google.android.gms.vision.text.Line;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
 

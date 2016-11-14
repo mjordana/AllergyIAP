@@ -45,7 +45,7 @@ public class CatalogAdapter extends RecyclerView.Adapter<CatalogAdapter.CatalogV
         viewHolder.description.setText(catalaog.description);
 
         new DownloadImageTask(viewHolder.image).execute(catalaog.url_image);
-        //viewHolder.image.setImageResource(resource);
+        viewHolder.image.setImageResource(R.drawable.allergy_product);
 
     }
 

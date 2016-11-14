@@ -86,6 +86,7 @@ public class MapActivity extends BaseActivity implements OnMapReadyCallback, Goo
         riskColors.add(getResources().getColor(R.color.yellow));
         riskColors.add(getResources().getColor(R.color.orange));
         riskColors.add(getResources().getColor(R.color.red));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void initStationsAllergies() {
