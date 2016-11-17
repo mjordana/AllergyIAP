@@ -4,14 +4,24 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.database.MatrixCursor;
 import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.BaseColumns;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v4.widget.CursorAdapter;
+import android.support.v4.widget.SimpleCursorAdapter;
+import android.support.v7.widget.SearchView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -43,9 +53,11 @@ public class MapActivity extends BaseActivity implements OnMapReadyCallback, Goo
 
     private List<StationEntity> stations;
     private HashMap<String, StationEntity> allergies;
+    private HashMap<Integer, Marker> markers;
 
     private List<Integer> riskColors;
 
+    private SimpleCursorAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,12 +98,73 @@ public class MapActivity extends BaseActivity implements OnMapReadyCallback, Goo
         riskColors.add(getResources().getColor(R.color.yellow));
         riskColors.add(getResources().getColor(R.color.orange));
         riskColors.add(getResources().getColor(R.color.red));
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        final String[] from = new String[]{"cityName"};
+        final int[] to = new int[]{android.R.id.text1};
+        mAdapter = new SimpleCursorAdapter(context,
+                android.R.layout.simple_list_item_1,
+                null,
+                from,
+                to,
+                CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        Log.v(TAG, "onCreateOptionsMenu");
+        //return super.onCreateOptionsMenu(menu);
+
+        getMenuInflater().inflate(R.menu.main, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.menu_search);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        searchView.setQueryHint(getString(R.string.menu_search));
+        searchView.setSuggestionsAdapter(mAdapter);
+        searchView.setOnSuggestionListener(new SearchView.OnSuggestionListener() {
+            @Override
+            public boolean onSuggestionSelect(int position) {
+                focusCityInMap(position);
+                return false;
+            }
+
+            @Override
+            public boolean onSuggestionClick(int position) {
+                focusCityInMap(position);
+                return false;
+            }
+        });
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                populateAdapter(newText);
+                return false;
+            }
+        });
+
+        return true;
+    }
+
+    private void focusCityInMap(int position) {
+        Cursor cursor = mAdapter.getCursor();
+        Integer in = cursor.getInt(position);
+        StationEntity s = stations.get(in.intValue()-1);
+
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(s.latitude, s.longitude), 14));
+
+        Marker m = markers.get(s.id);
+        if (m != null)
+            m.showInfoWindow();
     }
 
     private void initStationsAllergies() {
         stations = new ArrayList<>();
         allergies = new HashMap<>();
+        markers = new HashMap<>();
 
         stations.add(new StationEntity(1, "Lleida", 41.628333, 0.595556));
         stations.add(new StationEntity(2, "Manresa", 41.720183, 1.839867));
@@ -100,7 +173,6 @@ public class MapActivity extends BaseActivity implements OnMapReadyCallback, Goo
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        Log.e(TAG, "");
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         switch (requestCode) {
@@ -120,7 +192,7 @@ public class MapActivity extends BaseActivity implements OnMapReadyCallback, Goo
         }
     }
 
-    private String createMarker(double latitude, double longitude, String title) {
+    private Marker createMarker(double latitude, double longitude, String title) {
         // Add a marker in Sydney and move the camera
         LatLng pos = new LatLng(latitude, longitude);
         Marker marker = mMap.addMarker(new MarkerOptions()
@@ -130,7 +202,7 @@ public class MapActivity extends BaseActivity implements OnMapReadyCallback, Goo
                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(pos));
 
-        return marker.getId();
+        return marker;
 
         //marker.showInfoWindow();
     }
@@ -148,8 +220,9 @@ public class MapActivity extends BaseActivity implements OnMapReadyCallback, Goo
         }*/
 
         for (StationEntity s : stations) {
-            String id = createMarker(s.latitude, s.longitude, s.city);
-            allergies.put(id, s);
+            Marker m = createMarker(s.latitude, s.longitude, s.city);
+            allergies.put(m.getId(), s);
+            markers.put(s.id, m);
         }
     }
 
@@ -163,7 +236,7 @@ public class MapActivity extends BaseActivity implements OnMapReadyCallback, Goo
 
         Intent intent = new Intent(this, MapAllergyLevelsActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putSerializable(C.IntentExtra.Sender.VAR_ALLERGY, s.id);
+        bundle.putSerializable(C.IntentExtra.Sender.VAR_ALLERGY, s);
         intent.putExtras(bundle);
         startActivity(intent);
     }
@@ -187,5 +260,17 @@ public class MapActivity extends BaseActivity implements OnMapReadyCallback, Goo
         return null;
     }
 
+
+    private void populateAdapter(String query) {
+        final MatrixCursor c = new MatrixCursor(new String[]{BaseColumns._ID, "cityName"});
+
+        for (StationEntity station : allergies.values()) {
+
+            if (station.city.toLowerCase().startsWith(query.toLowerCase()))
+                c.addRow(new Object[]{station.id, station.city});
+        }
+
+        mAdapter.changeCursor(c);
+    }
 
 }

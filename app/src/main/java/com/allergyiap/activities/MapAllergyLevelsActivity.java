@@ -13,6 +13,7 @@ import android.view.View;
 import com.allergyiap.R;
 import com.allergyiap.adapters.AllergiesAdapter;
 import com.allergyiap.entities.AllergyEntity;
+import com.allergyiap.entities.StationEntity;
 import com.allergyiap.utils.C;
 
 import java.util.ArrayList;
@@ -26,22 +27,26 @@ public class MapAllergyLevelsActivity extends BaseActivity {
     private RecyclerView recyclerView;
     private AsyncTask<Void, Void, Void> task;
     List<AllergyEntity> allergy = new ArrayList<>();
+    StationEntity station;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_allergy_levels);
 
+        //Integer id = getIntent().getIntExtra(C.IntentExtra.Sender.VAR_ALLERGY, 1);
+        station = (StationEntity)getIntent().getSerializableExtra(C.IntentExtra.Sender.VAR_ALLERGY);
+
         getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(station.city);
 
         recyclerView = (RecyclerView) findViewById(R.id.scrollableview);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setHasFixedSize(true);
 
-        Integer id = getIntent().getIntExtra(C.IntentExtra.Sender.VAR_ALLERGY, 1);
 
-        createArray(id);
+        createArray(station.id);
         loadData();
     }
 
