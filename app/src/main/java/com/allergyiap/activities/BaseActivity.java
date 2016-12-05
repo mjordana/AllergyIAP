@@ -30,7 +30,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         context = getApplicationContext();
 
         updateLocale();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if(getSupportActionBar() != null)
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // transparent toolbar android
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
