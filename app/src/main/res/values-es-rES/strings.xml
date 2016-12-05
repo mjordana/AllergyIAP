@@ -12,17 +12,17 @@
     <!-- Menu buttons mainactivity -->
     <string name="menu_map">Mapa de alergia</string>
     <string name="menu_alarms">Mis alarmas</string>
-    <string name="menu_config">Configuracion</string>
+    <string name="menu_config">Configuración</string>
     <string name="menu_product">Catalogo de productos</string>
 
     <!-- Activity my alarms -->
-    <string name="days">Dias de la semana</string>
+    <string name="days">Días de la semana</string>
     <string name="hour">Hora</string>
     <string name="allergy">Allergias</string>
 
 
     <!-- Activity MapAllergyLevelsDetails-->
-    <string name="group_description">Descripcion</string>
+    <string name="group_description">Descripción</string>
     <string name="group_diseases">Diseases</string>
     <string name="group_medicament">Medicamento</string>
 
