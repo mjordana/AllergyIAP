@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.allergyiap.entities.AllergyLevelEntity;
+import com.allergyiap.entities.StationEntity;
 import com.allergyiap.utils.DBHelper;
 import com.allergyiap.utils.Util;
 
@@ -30,10 +31,23 @@ import static android.R.attr.data;
  */
 
 public class AllergyLevelProxyClass {
-    public static List<AllergyLevelEntity> getLevels() throws Exception {
+    public static List<StationEntity> getStations() throws Exception {
         Context context = DBHelper.getCurrentContext();
         DBHelper db = DBHelper.getDBHelper(context);
-        JSONArray t = db.getQuery("SELECT * FROM allergy_level WHERE date_start <= DATE('NOW') AND DATE('NOW') <= date_end");
+        JSONArray t = db.getQuery("SELECT * FROM stations");
+        ArrayList<StationEntity> r = new ArrayList<StationEntity>();
+        for (int i = 0; i < t.length(); i++) {
+            JSONObject keyValue = t.getJSONObject(i);
+            r.add(StationEntity.fromJson(keyValue));
+        }
+        return r;
+    }
+
+    public static List<AllergyLevelEntity> getLevels(int stationId) throws Exception {
+        String stationString = String.valueOf(stationId);
+        Context context = DBHelper.getCurrentContext();
+        DBHelper db = DBHelper.getDBHelper(context);
+        JSONArray t = db.getQuery("SELECT * FROM allergy_level INNER JOIN stations ON stations.name = allergy_level.station WHERE station.id=" + stationString + " AND date_start <= DATE('NOW') AND DATE('NOW') <= date_end ");
         if (t.length() == 0) {
             InputStream s = null;
             s = context.getAssets().open("levels.json");
@@ -44,7 +58,7 @@ public class AllergyLevelProxyClass {
                 JSONObject keyValue = jsonObj.getJSONObject(i);
                 db.insertJson(keyValue, "allergy_level");
             }
-            t = db.getQuery("SELECT * FROM allergy_level WHERE date_start <= DATE('NOW') AND DATE('NOW') <= date_end");
+            t = db.getQuery("SELECT * FROM allergy_level INNER JOIN stations ON stations.name = allergy_level.station WHERE station.id=" + stationString + " AND date_start <= DATE('NOW') AND DATE('NOW') <= date_end ");
         }
         ArrayList<AllergyLevelEntity> r = new ArrayList<AllergyLevelEntity>();
         for (int i = 0; i < t.length(); i++) {

@@ -1,32 +1,24 @@
 package com.allergyiap.activities;
 
-import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.MatrixCursor;
-import android.graphics.Color;
 import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.BaseColumns;
 import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.CursorAdapter;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.widget.SearchView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.allergyiap.R;
-import com.allergyiap.entities.AllergyEntity;
 import com.allergyiap.entities.StationEntity;
 import com.allergyiap.utils.C;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -220,7 +212,7 @@ public class MapActivity extends BaseActivity implements OnMapReadyCallback, Goo
         }*/
 
         for (StationEntity s : stations) {
-            Marker m = createMarker(s.latitude, s.longitude, s.city);
+            Marker m = createMarker(s.latitude, s.longitude, s.name);
             allergies.put(m.getId(), s);
             markers.put(s.id, m);
         }
@@ -266,8 +258,8 @@ public class MapActivity extends BaseActivity implements OnMapReadyCallback, Goo
 
         for (StationEntity station : allergies.values()) {
 
-            if (station.city.toLowerCase().startsWith(query.toLowerCase()))
-                c.addRow(new Object[]{station.id, station.city});
+            if (station.name.toLowerCase().startsWith(query.toLowerCase()))
+                c.addRow(new Object[]{station.id, station.name});
         }
 
         mAdapter.changeCursor(c);
