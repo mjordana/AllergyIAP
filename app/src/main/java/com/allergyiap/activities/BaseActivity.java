@@ -10,6 +10,7 @@ import android.view.WindowManager;
 
 import com.allergyiap.R;
 import com.allergyiap.utils.C;
+import com.allergyiap.utils.DBHelper;
 import com.allergyiap.utils.Prefs;
 
 import java.util.Locale;
@@ -21,6 +22,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     // Application context
     Context context;
+    DBHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,9 +30,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         //requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         context = getApplicationContext();
+        db = DBHelper.getDBHelper(context);
 
         updateLocale();
-        if(getSupportActionBar() != null)
+        if (getSupportActionBar() != null)
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // transparent toolbar android
@@ -55,13 +58,14 @@ public abstract class BaseActivity extends AppCompatActivity {
                 Prefs.getInstance(context).setLanguage(C.Lang.LANG_EN);
             }
         } catch (Exception e) {
-            Log.e("BaseActivity.onCreate","Set Language Exception: "+e.getMessage());
+            Log.e("BaseActivity.onCreate", "Set Language Exception: " + e.getMessage());
             Prefs.getInstance(context).setLanguage(C.Lang.LANG_EN);
         }
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
                 return true;
