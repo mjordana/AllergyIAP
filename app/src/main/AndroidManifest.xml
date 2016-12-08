@@ -52,6 +52,10 @@
             android:label="@string/product_catalog_name"
             android:configChanges="orientation|screenSize"/>
         <activity
+            android:name=".activities.ProductCatalogMapActivity"
+            android:label="@string/product_catalog_name"
+            android:configChanges="orientation|screenSize"/>
+        <activity
             android:name=".activities.MyAlarmsActivity"
             android:label="@string/my_alarms_name"
             android:configChanges="orientation|screenSize"/>
