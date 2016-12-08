@@ -11,7 +11,6 @@
 
     <!-- Menu buttons mainactivity -->
     <string name="menu_map">Mapa de alergia</string>
-    <string name="menu_alarms">Mis alarmas</string>
     <string name="menu_config">Configuración</string>
     <string name="menu_product">Catalogo de productos</string>
 

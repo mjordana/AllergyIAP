@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="allow_alarm">Alarm Notification</string>
+    <string name="allow_sounds">Enable sounds</string>
+    <string name="notify_level_increase">Notify when the allergy level increase</string>
+
+    <string name="version_app">Application Version %1$s</string>
+    <string name="title_version_app">Information</string>
+
+    <string name="menu_info">Info</string>
+
+    <string name="dialog_week_days_title">Select the days of the week</string>
+    <string name="dialog_hour_title">Select Item</string>
+    <string name="dialog_allergies_title">Select the allergies to notify</string>
+
+    <string-array name="string_array_days_week">
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+    </string-array>
+
+    <string-array name="string_array_short_days_week">
+        <item>Mo</item>
+        <item>Tu</item>
+        <item>We</item>
+        <item>Th</item>
+        <item>Fr</item>
+        <item>Sa</item>
+        <item>Su</item>
+    </string-array>
+
+    <string-array name="string_array_allergies">
+        <item>Wall Pellitory</item>
+        <item>Gramineae</item>
+        <item>Olive tree</item>
+        <item>Australian pine</item>
+        <item>Chenopodiaceae/Amaranthaceae</item>
+        <item>Compositae</item>
+        <item>Cruciferae</item>
+        <item>Cypress</item>
+        <item>Heath</item>
+        <item>Mercury</item>
+        <item>Mugwort</item>
+        <item>Palms</item>
+        <item>Alternaria</item>
+        <item>Cladosporium</item>
+    </string-array>
+
+</resources>

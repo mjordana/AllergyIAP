@@ -7,6 +7,12 @@ import android.content.pm.PackageManager;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
+import com.google.gson.Gson;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 /**
  * Application Preferences Manager.
  */
@@ -112,5 +118,54 @@ public class Prefs {
 
     public void setUserFirstTime(Boolean param) {
         sharedPrefs().edit().putBoolean(C.Prefs.USER_FIRST_TIME, param).apply();
+    }
+
+    public void setAlarmEnabled(Boolean enabled) {
+        sharedPrefs().edit().putBoolean(C.Prefs.USER_ALARM_ENABLED, enabled).apply();
+    }
+    public Boolean getAlarmEnabled() {
+        return sharedPrefs().getBoolean(C.Prefs.USER_ALARM_ENABLED, false);
+    }
+
+    public void setAlarmIncrease(Boolean enabled) {
+        sharedPrefs().edit().putBoolean(C.Prefs.USER_ALARM_INCREASE, enabled).apply();
+    }
+    public Boolean getAlarmIncrease() {
+        return sharedPrefs().getBoolean(C.Prefs.USER_ALARM_INCREASE, false);
+    }
+
+    public void setSoundEnabled(Boolean enabled) {
+        sharedPrefs().edit().putBoolean(C.Prefs.USER_SOUND_ENABLED, enabled).apply();
+    }
+    public Boolean getSoundEnabled() {
+        return sharedPrefs().getBoolean(C.Prefs.USER_SOUND_ENABLED, false);
+    }
+
+    public void setAllergies( List<String> list) {
+        Gson gson = new Gson();
+        sharedPrefs().edit().putString(C.Prefs.USER_ALLERGIES, gson.toJson(list)).apply();
+    }
+
+    public List<String> getAllergies() {
+        Gson gson = new Gson();
+        String aux = sharedPrefs().getString(C.Prefs.USER_ALLERGIES, "");
+        return gson.fromJson(aux, List.class);
+    }
+
+    public void setDaysWeek(List list) {
+        Gson gson = new Gson();
+        sharedPrefs().edit().putString(C.Prefs.USER_DAYS_WEEK, gson.toJson(list)).apply();
+    }
+    public List<Integer> getDaysWeek() {
+        Gson gson = new Gson();
+        String aux = sharedPrefs().getString(C.Prefs.USER_DAYS_WEEK, "");
+        return gson.fromJson(aux, List.class);
+    }
+
+    public void setHourAlarm(String result) {
+        sharedPrefs().edit().putString(C.Prefs.USER_HOUR_ALARM, result).apply();
+    }
+    public String getHourAlarm() {
+        return sharedPrefs().getString(C.Prefs.USER_HOUR_ALARM, "");
     }
 }

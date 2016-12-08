@@ -10,147 +10,251 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.allergyiap.activities.ConfigurationActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/textView" />
-
-
-    <LinearLayout
-        android:orientation="vertical"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:weightSum="1"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/xcvxzcv">
+        android:scrollbars="vertical"
+        android:fadeScrollbars="true">
 
-        <TextView
-            android:text="System configuration"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textView4"
-            android:textStyle="normal|bold"
-            android:textSize="18sp"
-            android:textAlignment="center"
-            android:layout_weight="0.06" />
+            android:orientation="vertical"
+            android:weightSum="1">
 
-        <Switch
-            android:text="Enable sounds"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/enableSoundEnable"
-            android:textSize="16sp"
-            android:checked="false" />
+            <Switch
+                android:id="@+id/enableSound"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/allow_sounds"
+                android:textSize="16sp" />
 
-        <Switch
-            android:text="Allow alert mails"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/switch3"
-            android:textSize="16sp" />
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                android:padding="5dp"/>
 
-        <Switch
-            android:text="Another switch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/switch4"
-            android:textSize="16sp" />
+            <Switch
+                android:id="@+id/alarmIncrease"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/notify_level_increase"
+                android:textSize="16sp" />
 
-        <TextView
-            android:text="User profile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView2"
-            android:layout_weight="0.11"
-            android:textSize="18sp"
-            android:textAlignment="center"
-            android:textStyle="normal|bold" />
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                android:padding="5dp"/>
 
+            <!--Switch
+                android:id="@+id/switch3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Allow alert mails"
+                android:textSize="16sp" />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:hint="Name"
-            android:ems="10"
-            android:id="@+id/editText2"
-            android:layout_weight="0.06" />
+            <Switch
+                android:id="@+id/switch4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Another switch"
+                android:textSize="16sp" /-->
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
-            android:ems="10"
-            android:id="@+id/editText3"
-            android:layout_weight="0.06"
-            android:hint="E-mail"/>
+            <!--LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:ems="10"
-            android:id="@+id/editText5"
-            android:layout_weight="0.06"
-            android:hint="Password" />
+                <TextView
+                    style="?android:attr/listSeparatorTextViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Custom" />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPostalAddress"
-            android:ems="10"
-            android:id="@+id/editText4"
-            android:layout_weight="0.06"
-            android:hint="City" />
+            </LinearLayout>
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:ems="10"
-            android:id="@+id/editText7"
-            android:layout_weight="0.06"
-            android:hint="Postal code" />
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                android:padding="5dp"></View>
 
-        <TextView
-            android:text="Application information"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView6"
-            android:layout_weight="0.06"
-            android:textStyle="normal|bold"
-            android:textSize="18sp"
-            android:textAlignment="center" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-        <TextView
-            android:text="Application Version"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView7"
-            android:layout_weight="0.06"
-            android:textSize="16sp"
-            android:textStyle="normal|bold" />
+                <CheckBox
+                    android:id="@+id/checkBox2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="onCheckboxClicked"
+                    android:text="Alarm Notification" />
 
-        <TextView
-            android:text="0.1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView8"
-            android:layout_weight="0.06"
-            android:textSize="16sp" />
+            </LinearLayout-->
 
-        <Button
-            android:text="Save changes"
-            android:layout_width="145dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/buttonChanges"
-            android:layout_gravity="center_vertical|center_horizontal"
-            android:onClick="onClickSaveChanges" />
+            <Switch
+                android:id="@+id/enableAlarm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/allow_alarm"
+                android:textSize="16sp" />
 
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/daysOfWeek"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@drawable/ic_calendar"
+                    android:text="@string/days"
+                    android:layout_weight="1"
+                    android:enabled="false"/>
+
+                <Button
+                    android:id="@+id/hour"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@drawable/icon_clock_alarm"
+                    android:text="@string/hour"
+                    android:layout_weight="1"
+                    android:enabled="false"/>
+
+            </LinearLayout>
+
+            <!--LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="?android:attr/listSeparatorTextViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Automatic" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                android:padding="5dp"></View>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBox3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Notify only when the level increase" />
+            </LinearLayout-->
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                android:padding="5dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="?android:attr/listSeparatorTextViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Allergies to notify" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/allergy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@drawable/ic_flower"
+                    android:text="@string/allergy" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.11"
+                android:text="User profile"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:textStyle="normal|bold" />
+
+            <EditText
+                android:id="@+id/editText2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.06"
+                android:ems="10"
+                android:hint="Name"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/editText3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.06"
+                android:ems="10"
+                android:hint="E-mail"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:id="@+id/editText5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.06"
+                android:ems="10"
+                android:hint="Password"
+                android:inputType="textPassword" />
+
+            <EditText
+                android:id="@+id/editText4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.06"
+                android:ems="10"
+                android:hint="City"
+                android:inputType="textPostalAddress" />
+
+            <EditText
+                android:id="@+id/editText7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.06"
+                android:ems="10"
+                android:hint="Postal code"
+                android:inputType="number" />
+
+            <Button
+                android:id="@+id/buttonChanges"
+                android:layout_width="145dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:onClick="onClickSaveChanges"
+                android:text="Save changes" />
+
+        </LinearLayout>
+
+    </ScrollView>
 </RelativeLayout>
