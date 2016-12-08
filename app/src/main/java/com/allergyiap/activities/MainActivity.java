@@ -4,12 +4,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.allergyiap.R;
+import com.allergyiap.entities.AllergyLevelEntity;
+import com.allergyiap.services.AllergyLevelProxyClass;
+import com.allergyiap.utils.DBHelper;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,6 +26,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        try {
+            List<AllergyLevelEntity> l = AllergyLevelProxyClass.getLevels();
+            Log.d("TESTANDO", String.valueOf(l.size()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         initLinearLayouts();
     }
 
@@ -35,10 +47,10 @@ public class MainActivity extends AppCompatActivity {
         config.setCardBackgroundColor(getResources().getColor(R.color.green));
         product.setCardBackgroundColor(getResources().getColor(R.color.purple));
 
-        ((ImageView)map.findViewById(R.id.menu_image)).setImageResource(R.drawable.map);
-        ((ImageView)alarms.findViewById(R.id.menu_image)).setImageResource(R.drawable.alarm);
-        ((ImageView)config.findViewById(R.id.menu_image)).setImageResource(R.drawable.config);
-        ((ImageView)product.findViewById(R.id.menu_image)).setImageResource(R.drawable.product_catalog);
+        ((ImageView) map.findViewById(R.id.menu_image)).setImageResource(R.drawable.map);
+        ((ImageView) alarms.findViewById(R.id.menu_image)).setImageResource(R.drawable.alarm);
+        ((ImageView) config.findViewById(R.id.menu_image)).setImageResource(R.drawable.config);
+        ((ImageView) product.findViewById(R.id.menu_image)).setImageResource(R.drawable.product_catalog);
 
         ((TextView) map.findViewById(R.id.menu_name)).setText(getResources().getString(R.string.menu_map));
         ((TextView) alarms.findViewById(R.id.menu_name)).setText(getResources().getString(R.string.menu_alarms));
@@ -62,4 +74,5 @@ public class MainActivity extends AppCompatActivity {
     public void onClickMyAlarms(View v) {
         startActivity(new Intent(this, MyAlarmsActivity.class));
     }
+
 }
