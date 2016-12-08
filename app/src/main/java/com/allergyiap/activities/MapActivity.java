@@ -1,32 +1,24 @@
 package com.allergyiap.activities;
 
-import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.MatrixCursor;
-import android.graphics.Color;
 import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.BaseColumns;
 import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.CursorAdapter;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.widget.SearchView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.allergyiap.R;
-import com.allergyiap.entities.AllergyEntity;
 import com.allergyiap.entities.StationEntity;
 import com.allergyiap.utils.C;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -114,7 +106,7 @@ public class MapActivity extends BaseActivity implements OnMapReadyCallback, Goo
         Log.v(TAG, "onCreateOptionsMenu");
         //return super.onCreateOptionsMenu(menu);
 
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.menu_map, menu);
 
         MenuItem searchItem = menu.findItem(R.id.menu_search);
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
