@@ -50,53 +50,6 @@
                 android:background="@android:color/darker_gray"
                 android:padding="5dp"/>
 
-            <!--Switch
-                android:id="@+id/switch3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Allow alert mails"
-                android:textSize="16sp" />
-
-            <Switch
-                android:id="@+id/switch4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Another switch"
-                android:textSize="16sp" /-->
-
-            <!--LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    style="?android:attr/listSeparatorTextViewStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Custom" />
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray"
-                android:padding="5dp"></View>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <CheckBox
-                    android:id="@+id/checkBox2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:onClick="onCheckboxClicked"
-                    android:text="Alarm Notification" />
-
-            </LinearLayout-->
-
             <Switch
                 android:id="@+id/enableAlarm"
                 android:layout_width="match_parent"
@@ -129,36 +82,6 @@
 
             </LinearLayout>
 
-            <!--LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    style="?android:attr/listSeparatorTextViewStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Automatic" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray"
-                android:padding="5dp"></View>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <CheckBox
-                    android:id="@+id/checkBox3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Notify only when the level increase" />
-            </LinearLayout-->
-
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
@@ -168,20 +91,13 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <TextView
                     style="?android:attr/listSeparatorTextViewStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Allergies to notify" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/allergy"

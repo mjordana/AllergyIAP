@@ -106,7 +106,7 @@ public class MapActivity extends BaseActivity implements OnMapReadyCallback, Goo
         Log.v(TAG, "onCreateOptionsMenu");
         //return super.onCreateOptionsMenu(menu);
 
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.menu_map, menu);
 
         MenuItem searchItem = menu.findItem(R.id.menu_search);
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
