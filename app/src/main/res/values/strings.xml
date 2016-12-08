@@ -10,7 +10,6 @@
 
     <!-- Menu buttons mainactivity -->
     <string name="menu_map">Map Allergy</string>
-    <string name="menu_alarms">My Alarms</string>
     <string name="menu_config">Configuration</string>
     <string name="menu_product">Product Catalog</string>
 
@@ -38,4 +37,8 @@
     </string>
 
     <string name="menu_search">Search</string>
+
+
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
 </resources>

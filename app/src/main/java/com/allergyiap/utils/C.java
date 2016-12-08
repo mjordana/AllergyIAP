@@ -28,6 +28,12 @@ public final class C {
         public static final String LANGUAGE = "prefs.language";
 
         public static final String USER_FIRST_TIME = "user.first.time";
+        public static final String USER_ALARM_ENABLED = "user.alarm.enabled";
+        public static final String USER_SOUND_ENABLED = "user.sound.enabled";
+        public static final String USER_ALARM_INCREASE = "user.alarm.increase";
+        public static final String USER_HOUR_ALARM = "user.hour.alarm";
+        public static final String USER_ALLERGIES = "user.allergies";
+        public static final String USER_DAYS_WEEK = "user.days.week";
     }
 
     /**

@@ -18,14 +18,6 @@
         android:layout_height="match_parent"
         android:weightSum="1">
 
-        <!--ImageButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/cast_album_art_placeholder"
-            android:id="@+id/ibtn_map"
-            android:layout_weight="0.59"
-            android:onClick="onClickMap"
-             /-->
         <LinearLayout
             android:id="@+id/linear_map"
             android:layout_width="match_parent"
@@ -34,14 +26,6 @@
             android:onClick="onClickMap">
             <include layout="@layout/fragment_card_menu" />
         </LinearLayout>
-
-        <!--ImageButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/cast_album_art_placeholder"
-            android:id="@+id/ibtn_product"
-            android:layout_weight="0.89"
-            android:onClick="onClickProductCatalog" /-->
 
         <LinearLayout
             android:id="@+id/linear_product"
@@ -58,29 +42,6 @@
             android:layout_height="169dp"
             android:layout_weight="0.5">
 
-            <!--ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/cast_album_art_placeholder"
-                android:id="@+id/ibtn_alarms"
-                android:layout_weight="1"
-                android:onClick="onClickMyAlarms" />
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/cast_album_art_placeholder"
-                android:id="@+id/ibtn_config"
-                android:layout_weight="1"
-                android:onClick="onClickConfiguration" /-->
-            <LinearLayout
-                android:id="@+id/linear_alarms"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:onClick="onClickMyAlarms">
-                <include layout="@layout/fragment_card_menu" />
-            </LinearLayout>
             <LinearLayout
                 android:id="@+id/linear_config"
                 android:layout_width="match_parent"
