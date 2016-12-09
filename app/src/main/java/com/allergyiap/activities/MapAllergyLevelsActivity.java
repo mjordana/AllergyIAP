@@ -38,7 +38,7 @@ public class MapAllergyLevelsActivity extends BaseActivity {
         station = (StationEntity)getIntent().getSerializableExtra(C.IntentExtra.Sender.VAR_ALLERGY);
 
         getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(station.city);
+        getSupportActionBar().setTitle(station.name);
 
         recyclerView = (RecyclerView) findViewById(R.id.scrollableview);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));

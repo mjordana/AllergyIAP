@@ -212,7 +212,7 @@ public class MapActivity extends BaseActivity implements OnMapReadyCallback, Goo
         }*/
 
         for (StationEntity s : stations) {
-            Marker m = createMarker(s.latitude, s.longitude, s.city);
+            Marker m = createMarker(s.latitude, s.longitude, s.name);
             allergies.put(m.getId(), s);
             markers.put(s.id, m);
         }
@@ -258,8 +258,8 @@ public class MapActivity extends BaseActivity implements OnMapReadyCallback, Goo
 
         for (StationEntity station : allergies.values()) {
 
-            if (station.city.toLowerCase().startsWith(query.toLowerCase()))
-                c.addRow(new Object[]{station.id, station.city});
+            if (station.name.toLowerCase().startsWith(query.toLowerCase()))
+                c.addRow(new Object[]{station.id, station.name});
         }
 
         mAdapter.changeCursor(c);
