@@ -2,6 +2,8 @@ package com.allergyiap.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -15,6 +17,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.allergyiap.R;
 
@@ -29,6 +32,29 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initLinearLayouts();
+
+        BottomNavigationView bottomNavigationView = (BottomNavigationView)
+                findViewById(R.id.bottom_navigation);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.menu_map:
+                                Toast.makeText(getApplicationContext(), "Map", Toast.LENGTH_SHORT).show();
+                                break;
+                            case R.id.menu_config:
+                                Toast.makeText(getApplicationContext(), "Config", Toast.LENGTH_SHORT).show();
+                                break;
+                            case R.id.menu_product:
+                                Toast.makeText(getApplicationContext(), "Product", Toast.LENGTH_SHORT).show();
+                                break;
+                        }
+                        return false;
+                    }
+                });
+
     }
 
     @Override
@@ -69,9 +95,9 @@ public class MainActivity extends AppCompatActivity {
         config.setCardBackgroundColor(getResources().getColor(R.color.green));
         product.setCardBackgroundColor(getResources().getColor(R.color.purple));
 
-        ((ImageView)map.findViewById(R.id.menu_image)).setImageResource(R.drawable.map);
-        ((ImageView)config.findViewById(R.id.menu_image)).setImageResource(R.drawable.config);
-        ((ImageView)product.findViewById(R.id.menu_image)).setImageResource(R.drawable.product_catalog);
+        //((ImageView)map.findViewById(R.id.menu_image)).setImageResource(R.drawable.map);
+        //((ImageView)config.findViewById(R.id.menu_image)).setImageResource(R.drawable.config);
+        //((ImageView)product.findViewById(R.id.menu_image)).setImageResource(R.drawable.product_catalog);
 
         ((TextView) map.findViewById(R.id.menu_name)).setText(getResources().getString(R.string.menu_map));
         ((TextView) config.findViewById(R.id.menu_name)).setText(getResources().getString(R.string.menu_config));
