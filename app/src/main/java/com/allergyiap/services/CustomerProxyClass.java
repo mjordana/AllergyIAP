@@ -45,4 +45,15 @@ public class CustomerProxyClass {
         }
         return r;
     }
+
+    public static CustomerEntity getCustomerFromId(int idcustomer) throws Exception {
+        List<CustomerEntity> customers = CustomerProxyClass.getCustomers();
+        for (CustomerEntity customer : customers) {
+            if (customer.idcustomer == idcustomer) {
+                return customer;
+            }
+        }
+        return null;
+    }
+
 }
