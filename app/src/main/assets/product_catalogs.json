@@ -1,0 +1,44 @@
+[
+  {
+    "idproduct_catalog": "1",
+    "allergy_idallergy": "1",
+    "customer_idcustomer": "1",
+    "product_name": "Product 01",
+    "product_description": "Product 01 description"
+  },
+  {
+    "idproduct_catalog": "2",
+    "allergy_idallergy": "2",
+    "customer_idcustomer": "2",
+    "product_name": "Product 02",
+    "product_description": "Product 02 description"
+  },
+  {
+    "idproduct_catalog": "3",
+    "allergy_idallergy": "3",
+    "customer_idcustomer": "3",
+    "product_name": "Product 03",
+    "product_description": "Product 03 description"
+  },
+  {
+    "idproduct_catalog": "4",
+    "allergy_idallergy": "1",
+    "customer_idcustomer": "2",
+    "product_name": "Product 04",
+    "product_description": "Product 04 description"
+  },
+  {
+    "idproduct_catalog": "5",
+    "allergy_idallergy": "2",
+    "customer_idcustomer": "1",
+    "product_name": "Product 05",
+    "product_description": "Product 05 description"
+  },
+  {
+    "idproduct_catalog": "6",
+    "allergy_idallergy": "1",
+    "customer_idcustomer": "3",
+    "product_name": "Product 06",
+    "product_description": "Product 06 description"
+  }
+]
