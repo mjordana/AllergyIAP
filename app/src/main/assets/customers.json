@@ -1,0 +1,17 @@
+[
+  {
+    "idcustomer": "1",
+    "company_name": "Pharma 01",
+    "pharmacy_location": "41.393731;2.164938"
+  },
+  {
+    "idcustomer": "2",
+    "company_name": "Pharma 02",
+    "pharmacy_location": "41.393711;2.164918"
+  },
+  {
+    "idcustomer": "3",
+    "company_name": "Pharma 03",
+    "pharmacy_location": "41.393741;2.164948"
+  }
+]
