@@ -16,6 +16,7 @@ public class AllergyLevelEntity {
     public String station;
     public String idallergy_level;
     public String date_end;
+    public String allergy_name;
 
     static public AllergyLevelEntity fromJson(JSONObject obj) throws JSONException {
         AllergyLevelEntity o = new AllergyLevelEntity();
@@ -24,6 +25,7 @@ public class AllergyLevelEntity {
         o.date_start = obj.get("date_start").toString();
         o.current_level = obj.get("current_level").toString();
         o.station = obj.get("station").toString();
+        o.allergy_name = obj.get("allergy_name").toString();
         o.idallergy_level = obj.get("idallergy_level").toString();
         o.date_end = obj.get("date_end").toString();
         return o;
