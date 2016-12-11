@@ -20,10 +20,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.allergyiap.R;
-import com.allergyiap.entities.CustomerEntity;
-import com.allergyiap.services.CustomerProxyClass;
-
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -60,15 +56,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-        try {
-            List<CustomerEntity> la = CustomerProxyClass.getCustomers();
-            for (CustomerEntity a : la) {
-                Log.d("TESTANDO2", a.toString());
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
     }
 
     @Override
@@ -96,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         Intent sharingIntent = new Intent(Intent.ACTION_SEND);
         sharingIntent.setType("text/html");
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, Html.fromHtml("<p>This is the text that will be shared.</p>"));
-        startActivity(Intent.createChooser(sharingIntent, "Share using"));
+        startActivity(Intent.createChooser(sharingIntent,"Share using"));
     }
 
     private void initLinearLayouts() {
