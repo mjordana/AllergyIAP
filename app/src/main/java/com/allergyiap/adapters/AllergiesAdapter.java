@@ -12,20 +12,21 @@ import android.widget.TextView;
 
 import com.allergyiap.R;
 import com.allergyiap.entities.AllergyEntity;
+import com.allergyiap.entities.AllergyLevelEntity;
 
 import java.util.List;
 
 public class AllergiesAdapter extends RecyclerView.Adapter<AllergiesAdapter.AllergyViewHolder> {
     Context context;
     OnItemClickListener clickListener;
-    List<AllergyEntity> allergies;
+    List<AllergyLevelEntity> allergies;
 
-    public AllergiesAdapter(Context context, List<AllergyEntity> list) {
+    public AllergiesAdapter(Context context, List<AllergyLevelEntity> list) {
         this.context = context;
         this.allergies = list;
     }
 
-    public void setAllergies(List<AllergyEntity> list) {
+    public void setAllergies(List<AllergyLevelEntity> list) {
         this.allergies = list;
         notifyDataSetChanged();
     }
@@ -38,13 +39,13 @@ public class AllergiesAdapter extends RecyclerView.Adapter<AllergiesAdapter.Alle
 
     @Override
     public void onBindViewHolder(AllergyViewHolder viewHolder, int i) {
-        AllergyEntity allergy = allergies.get(i);
+        AllergyLevelEntity allergy = allergies.get(i);
 
         viewHolder.allergyEntity = allergy;
-        viewHolder.name.setText(allergy.type);
-        viewHolder.status.setText(allergy.preview);
+        viewHolder.name.setText(allergy.allergy_name);
+        viewHolder.status.setText(allergy.forecast_level);
         int resource = 0;
-        switch(allergy.risk){
+        switch(Integer.parseInt(allergy.current_level)){
             case 0 : resource = R.drawable.legend_level_allergy_null; break;
             case 1 : resource = R.drawable.legend_level_allergy_low; break;
             case 2 : resource = R.drawable.legend_level_allergy_medium; break;
@@ -66,7 +67,7 @@ public class AllergiesAdapter extends RecyclerView.Adapter<AllergiesAdapter.Alle
         TextView name;
         TextView status;
         ImageView image;
-        AllergyEntity allergyEntity;
+        AllergyLevelEntity allergyEntity;
         View finalView;
 
         public AllergyViewHolder(View view) {
@@ -85,7 +86,7 @@ public class AllergiesAdapter extends RecyclerView.Adapter<AllergiesAdapter.Alle
     }
 
     public interface OnItemClickListener {
-        void onItemClick(View view, int position, AllergyEntity alertEntity);
+        void onItemClick(View view, int position, AllergyLevelEntity alertEntity);
     }
 
     public void setOnItemClickListener(final OnItemClickListener itemClickListener) {

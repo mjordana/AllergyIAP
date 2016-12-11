@@ -20,6 +20,7 @@ import android.view.View;
 
 import com.allergyiap.R;
 import com.allergyiap.entities.StationEntity;
+import com.allergyiap.services.AllergyLevelProxyClass;
 import com.allergyiap.utils.C;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -154,13 +155,19 @@ public class MapActivity extends BaseActivity implements OnMapReadyCallback, Goo
     }
 
     private void initStationsAllergies() {
-        stations = new ArrayList<>();
+        //stations = new ArrayList<>();
         allergies = new HashMap<>();
         markers = new HashMap<>();
 
-        stations.add(new StationEntity(1, "Lleida", 41.628333, 0.595556));
-        stations.add(new StationEntity(2, "Manresa", 41.720183, 1.839867));
-        stations.add(new StationEntity(3, "Barcelona", 41.393728, 2.164922));
+        try {
+            stations =  AllergyLevelProxyClass.getStations();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        //stations.add(new StationEntity(1, "Lleida", 41.628333, 0.595556));
+        //stations.add(new StationEntity(2, "Manresa", 41.720183, 1.839867));
+        //stations.add(new StationEntity(3, "Barcelona", 41.393728, 2.164922));
     }
 
     @Override
@@ -256,9 +263,9 @@ public class MapActivity extends BaseActivity implements OnMapReadyCallback, Goo
     private void populateAdapter(String query) {
         final MatrixCursor c = new MatrixCursor(new String[]{BaseColumns._ID, "cityName"});
 
-        for (StationEntity station : allergies.values()) {
+        for (StationEntity station : stations) {
 
-            if (station.name.toLowerCase().startsWith(query.toLowerCase()))
+            if (station.name.toLowerCase().startsWith(query.toLowerCase()) || station.name.toLowerCase().contains(query.toLowerCase()))
                 c.addRow(new Object[]{station.id, station.name});
         }
 

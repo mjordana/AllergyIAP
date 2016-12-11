@@ -13,7 +13,9 @@ import android.view.View;
 import com.allergyiap.R;
 import com.allergyiap.adapters.AllergiesAdapter;
 import com.allergyiap.entities.AllergyEntity;
+import com.allergyiap.entities.AllergyLevelEntity;
 import com.allergyiap.entities.StationEntity;
+import com.allergyiap.services.AllergyLevelProxyClass;
 import com.allergyiap.utils.C;
 
 import java.util.ArrayList;
@@ -26,7 +28,9 @@ public class MapAllergyLevelsActivity extends BaseActivity {
     private AllergiesAdapter adapter;
     private RecyclerView recyclerView;
     private AsyncTask<Void, Void, Void> task;
-    List<AllergyEntity> allergy = new ArrayList<>();
+
+    List<AllergyLevelEntity> allergy;
+    //List<AllergyEntity> allergy = new ArrayList<>();
     StationEntity station;
 
     @Override
@@ -37,8 +41,8 @@ public class MapAllergyLevelsActivity extends BaseActivity {
         //Integer id = getIntent().getIntExtra(C.IntentExtra.Sender.VAR_ALLERGY, 1);
         station = (StationEntity)getIntent().getSerializableExtra(C.IntentExtra.Sender.VAR_ALLERGY);
 
-        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(station.name);
+        //getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setTitle(station.name);
 
         recyclerView = (RecyclerView) findViewById(R.id.scrollableview);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
@@ -62,83 +66,11 @@ public class MapAllergyLevelsActivity extends BaseActivity {
     }
 
     private void createArray(Integer station) {
-        allergy = new ArrayList<>();
-        allergy.add(new AllergyEntity(0, "Urticaceae", 1, "Stable"));
-        allergy.add(new AllergyEntity(1, "Gramineae (Poaceae)", 1, "Stable"));
-        allergy.add(new AllergyEntity(2, "Olea", 0, "Stable"));
-        allergy.add(new AllergyEntity(3, "Artemisia", 2, "Increase"));
-        allergy.add(new AllergyEntity(4, "Chenopodiaceae/Amaranthaceae", 1, "Stable"));
-        allergy.add(new AllergyEntity(5, "Erica", 1, "Stable"));
-        allergy.add(new AllergyEntity(6, "Casuarina", 0, "Stable"));
-        allergy.add(new AllergyEntity(7, "Compositae (Asteraceae)", 2, "Increase"));
-        allergy.add(new AllergyEntity(8, "Cruciferae (Brassicaceae)", 1, "Stable"));
-        allergy.add(new AllergyEntity(9, "Mercurialis", 0, "Stable"));
-        allergy.add(new AllergyEntity(10, "Palmae (Arecaceae)", 0, "Stable"));
-        allergy.add(new AllergyEntity(11, "Cupressaceae", 1, "Increase"));
-        allergy.add(new AllergyEntity(12, "Alternaria", 4, "Stable"));
-        allergy.add(new AllergyEntity(13, "Cladosporium", 4, "Stable"));
-
-        if (station == 2) {
-            //Maresa
-            allergy.get(0).risk = 2;
-            allergy.get(0).preview = "Stable";
-            allergy.get(1).risk = 1;
-            allergy.get(1).preview = "Stable";
-            allergy.get(2).risk = 0;
-            allergy.get(2).preview = "Stable";
-            allergy.get(3).risk = 1;
-            allergy.get(3).preview = "Stable";
-            allergy.get(4).risk = 1;
-            allergy.get(4).preview = "Stable";
-            allergy.get(5).risk = 1;
-            allergy.get(5).preview = "Stable";
-            allergy.get(6).risk = 0;
-            allergy.get(6).preview = "Stable";
-            allergy.get(7).risk = 1;
-            allergy.get(7).preview = "Stable";
-            allergy.get(8).risk = 1;
-            allergy.get(8).preview = "Stable";
-            allergy.get(9).risk = 1;
-            allergy.get(9).preview = "Stable";
-            allergy.get(10).risk = 0;
-            allergy.get(10).preview = "Stable";
-            allergy.get(11).risk = 2;
-            allergy.get(11).preview = "Increase";
-            allergy.get(12).risk = 4;
-            allergy.get(12).preview = "Stable";
-            allergy.get(13).risk = 4;
-            allergy.get(13).preview = "Stable";
-
-        } else if (station == 3) {
-            //Barcelona
-            allergy.get(0).risk = 1;
-            allergy.get(0).preview = "Stable";
-            allergy.get(1).risk = 1;
-            allergy.get(0).preview = "Stable";
-            allergy.get(2).risk = 0;
-            allergy.get(0).preview = "Stable";
-            allergy.get(3).risk = 1;
-            allergy.get(0).preview = "Stable";
-            allergy.get(4).risk = 1;
-            allergy.get(0).preview = "Stable";
-            allergy.get(5).risk = 0;
-            allergy.get(0).preview = "Stable";
-            allergy.get(6).risk = 1;
-            allergy.get(0).preview = "Stable";
-            allergy.get(7).risk = 1;
-            allergy.get(0).preview = "Stable";
-            allergy.get(8).risk = 1;
-            allergy.get(0).preview = "Stable";
-            allergy.get(9).risk = 1;
-            allergy.get(0).preview = "Stable";
-            allergy.get(10).risk = 1;
-            allergy.get(0).preview = "Stable";
-            allergy.get(11).risk = 2;
-            allergy.get(0).preview = "Stable";
-            allergy.get(12).risk = 4;
-            allergy.get(0).preview = "Stable";
-            allergy.get(13).risk = 4;
-            allergy.get(0).preview = "Stable";
+        try {
+            allergy = AllergyLevelProxyClass.getLevels(station);
+        } catch (Exception e) {
+            allergy = new ArrayList<>();
+            Log.e(TAG, "createArray:", e);
         }
     }
 
@@ -159,7 +91,7 @@ public class MapAllergyLevelsActivity extends BaseActivity {
         task.execute();
     }
 
-    private void loadAdapter(final List<AllergyEntity> list) {
+    private void loadAdapter(final List<AllergyLevelEntity> list) {
         Log.d(TAG, ".loadAdapter");
 
         if (adapter == null)
@@ -171,13 +103,13 @@ public class MapAllergyLevelsActivity extends BaseActivity {
         adapter.setOnItemClickListener(new AllergiesAdapter.OnItemClickListener() {
 
             @Override
-            public void onItemClick(View view, int position, AllergyEntity alertEntity) {
+            public void onItemClick(View view, int position, AllergyLevelEntity alertEntity) {
                 showAllergyDetail(alertEntity);
             }
         });
     }
 
-    private void showAllergyDetail(AllergyEntity alertEntity) {
+    private void showAllergyDetail(AllergyLevelEntity alertEntity) {
         Intent intent = new Intent(this, MapAllergyLevelsDetailsActivity.class);
         Bundle b = new Bundle();
         b.putSerializable(C.IntentExtra.Sender.VAR_ALLERGY2, alertEntity);

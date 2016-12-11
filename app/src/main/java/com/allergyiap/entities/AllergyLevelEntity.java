@@ -8,7 +8,7 @@ import org.json.JSONObject;
  * Created by lfernando on 08/12/2016.
  */
 
-public class AllergyLevelEntity {
+public class AllergyLevelEntity extends Entity{
     public String forecast_level;
     public String allergy_idallergy;
     public String date_start;

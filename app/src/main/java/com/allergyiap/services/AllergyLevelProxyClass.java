@@ -47,7 +47,7 @@ public class AllergyLevelProxyClass {
         String stationString = String.valueOf(stationId);
         Context context = DBHelper.getCurrentContext();
         DBHelper db = DBHelper.getDBHelper(context);
-        JSONArray t = db.getQuery("SELECT *,allergy.allergy_name AS allergy_name FROM allergy_level INNER JOIN allergy ON allergy.idallergy = allergy_level.allergy_idallergy INNER JOIN stations ON stations.name = allergy_level.station WHERE station.id=" + stationString + " AND date_start <= DATE('NOW') AND DATE('NOW') <= date_end ");
+        JSONArray t = db.getQuery("SELECT *,allergy.allergy_name AS allergy_name FROM allergy_level INNER JOIN allergy ON allergy.idallergy = allergy_level.allergy_idallergy INNER JOIN stations ON stations.name = allergy_level.station WHERE stations.id=" + stationString + " AND date_start <= DATE('NOW') AND DATE('NOW') <= date_end ");
         if (t.length() == 0) {
             InputStream s = null;
             s = context.getAssets().open("levels.json");
@@ -58,7 +58,7 @@ public class AllergyLevelProxyClass {
                 JSONObject keyValue = jsonObj.getJSONObject(i);
                 db.insertJson(keyValue, "allergy_level");
             }
-            t = db.getQuery("SELECT *,allergy.allergy_name AS allergy_name FROM allergy_level INNER JOIN allergy ON allergy.idallergy = allergy_level.allergy_idallergy INNER JOIN stations ON stations.name = allergy_level.station WHERE station.id=" + stationString + " AND date_start <= DATE('NOW') AND DATE('NOW') <= date_end ");
+            t = db.getQuery("SELECT *,allergy.allergy_name AS allergy_name FROM allergy_level INNER JOIN allergy ON allergy.idallergy = allergy_level.allergy_idallergy INNER JOIN stations ON stations.name = allergy_level.station WHERE stations.id=" + stationString + " AND date_start <= DATE('NOW') AND DATE('NOW') <= date_end ");
         }
         ArrayList<AllergyLevelEntity> r = new ArrayList<AllergyLevelEntity>();
         for (int i = 0; i < t.length(); i++) {
