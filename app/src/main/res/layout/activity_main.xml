@@ -12,32 +12,31 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fadeScrollbars="true"
-        android:scrollbars="none">
+        android:scrollbars="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:weightSum="1">
+            android:paddingBottom="85dp">
 
             <LinearLayout
                 android:id="@+id/linear_map"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.5"
+                android:layout_height="250dp"
                 android:onClick="onClickMap">
 
-                <include layout="@layout/fragment_card_menu" />
+                <include layout="@layout/fragment_card_map" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/linear_product"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="150dp"
                 android:layout_weight="0.5"
                 android:onClick="onClickProductCatalog">
 
-                <include layout="@layout/fragment_card_menu" />
+                <include layout="@layout/fragment_card_catalog" />
             </LinearLayout>
 
             <LinearLayout
@@ -49,11 +48,10 @@
                 <LinearLayout
                     android:id="@+id/linear_config"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_height="150dp"
                     android:onClick="onClickConfiguration">
 
-                    <include layout="@layout/fragment_card_menu" />
+                    <include layout="@layout/fragment_card_config" />
                 </LinearLayout>
 
             </LinearLayout>

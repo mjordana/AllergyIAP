@@ -48,8 +48,6 @@ public class MapActivity extends BaseActivity implements OnMapReadyCallback, Goo
     private HashMap<String, StationEntity> allergies;
     private HashMap<Integer, Marker> markers;
 
-    private List<Integer> riskColors;
-
     private SimpleCursorAdapter mAdapter;
 
     @Override
@@ -85,12 +83,6 @@ public class MapActivity extends BaseActivity implements OnMapReadyCallback, Goo
         }*/
 
         initStationsAllergies();
-        riskColors = new ArrayList<>();
-        riskColors.add(getResources().getColor(R.color.blue));
-        riskColors.add(getResources().getColor(R.color.green));
-        riskColors.add(getResources().getColor(R.color.yellow));
-        riskColors.add(getResources().getColor(R.color.orange));
-        riskColors.add(getResources().getColor(R.color.red));
 
         final String[] from = new String[]{"cityName"};
         final int[] to = new int[]{android.R.id.text1};
@@ -145,6 +137,7 @@ public class MapActivity extends BaseActivity implements OnMapReadyCallback, Goo
     private void focusCityInMap(int position) {
         Cursor cursor = mAdapter.getCursor();
         Integer in = cursor.getInt(position);
+
         StationEntity s = stations.get(in.intValue()-1);
 
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(s.latitude, s.longitude), 14));
@@ -264,8 +257,9 @@ public class MapActivity extends BaseActivity implements OnMapReadyCallback, Goo
         final MatrixCursor c = new MatrixCursor(new String[]{BaseColumns._ID, "cityName"});
 
         for (StationEntity station : stations) {
-
-            if (station.name.toLowerCase().startsWith(query.toLowerCase()) || station.name.toLowerCase().contains(query.toLowerCase()))
+            //Log.d(TAG, station.id + " - " + station.name);
+            //if (station.name.toLowerCase().startsWith(query.toLowerCase()))
+            if (station.name.toLowerCase().contains(query.toLowerCase()))
                 c.addRow(new Object[]{station.id, station.name});
         }
 

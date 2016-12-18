@@ -6,11 +6,12 @@ import android.view.MenuItem;
 
 import com.allergyiap.R;
 import com.allergyiap.entities.AllergyEntity;
+import com.allergyiap.entities.AllergyLevelEntity;
 import com.allergyiap.utils.C;
 
 public class MapAllergyLevelsDetailsActivity extends BaseActivity {
 
-    private AllergyEntity allergy;
+    private AllergyLevelEntity allergy;
 
 
     @Override
@@ -18,10 +19,9 @@ public class MapAllergyLevelsDetailsActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_allergy_levels_details);
 
-        allergy = (AllergyEntity) getIntent().getSerializableExtra(C.IntentExtra.Sender.VAR_ALLERGY2);
+        allergy = (AllergyLevelEntity) getIntent().getSerializableExtra(C.IntentExtra.Sender.VAR_ALLERGY2);
 
-        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(allergy.type);
+        getSupportActionBar().setTitle(allergy.allergy_name);
     }
 
     @Override
