@@ -35,6 +35,14 @@ public abstract class BaseActivity extends AppCompatActivity {
         context = getApplicationContext();
         db = DBHelper.getDBHelper(context);
 
+        try {
+            Log.d("TESTE10", "STARTING");
+            List<?> l=AllergyLevelProxyClass.getLevels(AllergyLevelProxyClass.getStations().get(0).id);
+            Log.d("TESTE10", String.valueOf(l.size()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         updateLocale();
         if (getSupportActionBar() != null)
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
