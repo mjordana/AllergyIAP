@@ -51,6 +51,7 @@ public class Util {
     public static String getUrl(String urlStr) throws Exception {
         java.net.URL url = new URL(urlStr);
         DownloadTask d = new DownloadTask();
+
         return d.execute(url).get();
     }
 

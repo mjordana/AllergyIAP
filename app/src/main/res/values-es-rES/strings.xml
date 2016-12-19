@@ -7,12 +7,15 @@
     <string name="my_alarms_name">Mis alarmas</string>
     <string name="map_level">Mapa de niveles</string>
     <string name="map_level_details">Detalles de los niveles</string>
-
+    <string name="login">Login</string>
+    <string name="signup">Registrar</string>
+    <string name="help">Ayuda</string>
 
     <!-- Menu buttons mainactivity -->
-    <string name="menu_map">Mapa de alergia</string>
+    <string name="menu_map">MAPA ALERGIA</string>
     <string name="menu_config">Configuración</string>
-    <string name="menu_product">Catalogo de productos</string>
+    <string name="menu_product">CATALOGO PRODUTOS</string>
+    <string name="menu_login">Login</string>
 
     <!-- Activity my alarms -->
     <string name="days">Días de la semana</string>
@@ -38,5 +41,20 @@
     </string>
 
     <string name="menu_search">Buscar</string>
+
+    <string name="login_email">Mail</string>
+    <string name="login_password">Contrasenya</string>
+    <string name="signup_email">Mail</string>
+    <string name="signup_name">Nombre</string>
+    <string name="signup_password">Contrasenya</string>
+    <string name="signup_confirm">Confirmar Contrasenya</string>
+    <string name="login_button">Login</string>
+    <string name="signup_button">Registrar</string>
+    <string name="login_forgot">Olvidaste tu contrasenya</string>
+    <string name="signup_already">Ya eres usuario ? Login</string>
+    <string name="help_instruction">Escribes tu mail</string>
+    <string name="help_send_button">Enviar</string>
+    <string name="help_cancel_button">Cancelar</string>
+
 
 </resources>

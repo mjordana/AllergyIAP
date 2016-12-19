@@ -1,6 +1,7 @@
 package com.allergyiap.activities;
 
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -35,7 +36,17 @@ public class ConfigurationActivity extends BaseActivity implements CompoundButto
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuration);
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         sound = (Switch) findViewById(R.id.enableSound);
         alarm = (Switch) findViewById(R.id.enableAlarm);

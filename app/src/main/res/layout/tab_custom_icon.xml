@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tabs"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:textAlignment="center">
+
+    <TextView
+        android:id="@+id/tab_label"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:gravity="center|center_vertical"
+        android:text="Text"
+        android:textColor="@color/grey_20"
+        android:textSize="12.5sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/badge_lower_ten"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/tab_label"
+        android:background="@drawable/icon_badge_lower_ten"
+        android:text="2"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/badge_higher_ten"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/tab_label"
+        android:background="@drawable/icon_badge_higher_ten"
+        android:text="27"
+        android:textColor="#FFF"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+</LinearLayout>

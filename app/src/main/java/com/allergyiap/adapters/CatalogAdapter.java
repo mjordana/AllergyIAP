@@ -12,20 +12,21 @@ import com.allergyiap.R;
 import com.allergyiap.entities.AllergyEntity;
 import com.allergyiap.entities.CatalogEntity;
 import com.allergyiap.entities.DownloadImageTask;
+import com.allergyiap.entities.ProductCatalogEntity;
 
 import java.util.List;
 
 public class CatalogAdapter extends RecyclerView.Adapter<CatalogAdapter.CatalogViewHolder> {
     Context context;
     OnItemClickListener clickListener;
-    List<CatalogEntity> catalogs;
+    List<ProductCatalogEntity> catalogs;
 
-    public CatalogAdapter(Context context, List<CatalogEntity> list) {
+    public CatalogAdapter(Context context, List<ProductCatalogEntity> list) {
         this.context = context;
         this.catalogs = list;
     }
 
-    public void setCatalogs(List<CatalogEntity> list) {
+    public void setCatalogs(List<ProductCatalogEntity> list) {
         this.catalogs = list;
         notifyDataSetChanged();
     }
@@ -38,13 +39,13 @@ public class CatalogAdapter extends RecyclerView.Adapter<CatalogAdapter.CatalogV
 
     @Override
     public void onBindViewHolder(CatalogViewHolder viewHolder, int i) {
-        CatalogEntity catalaog = catalogs.get(i);
+        ProductCatalogEntity catalaog = catalogs.get(i);
 
         viewHolder.catalogEntity = catalaog;
-        viewHolder.name.setText(catalaog.title);
-        viewHolder.description.setText(catalaog.description);
+        viewHolder.name.setText(catalaog.product_name);
+        viewHolder.description.setText(catalaog.product_description);
 
-        new DownloadImageTask(viewHolder.image).execute(catalaog.url_image);
+        //new DownloadImageTask(viewHolder.image).execute(catalaog.);
         viewHolder.image.setImageResource(R.drawable.allergy_product);
 
     }
@@ -60,7 +61,7 @@ public class CatalogAdapter extends RecyclerView.Adapter<CatalogAdapter.CatalogV
         TextView name;
         TextView description;
         ImageView image;
-        CatalogEntity catalogEntity;
+        ProductCatalogEntity catalogEntity;
         View finalView;
 
         public CatalogViewHolder(View view) {
@@ -79,7 +80,7 @@ public class CatalogAdapter extends RecyclerView.Adapter<CatalogAdapter.CatalogV
     }
 
     public interface OnItemClickListener {
-        void onItemClick(View view, int position, CatalogEntity catalogEntity);
+        void onItemClick(View view, int position, ProductCatalogEntity catalogEntity);
     }
 
     public void setOnItemClickListener(final OnItemClickListener itemClickListener) {
