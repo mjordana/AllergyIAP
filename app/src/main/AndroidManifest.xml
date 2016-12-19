@@ -43,15 +43,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity
-            android:name=".activities.MapActivity"
-            android:configChanges="orientation|screenSize"
-            android:label="@string/map_name"/>
-            <!--android:theme="@style/AppTheme.NoActionBar"/-->
-        <activity
-            android:name=".activities.ProductCatalogActivity"
-            android:label="@string/product_catalog_name"
-            android:configChanges="orientation|screenSize"/>
+        <!--android:theme="@style/AppTheme.NoActionBar"/-->
         <activity
             android:name=".activities.ProductCatalogMapActivity"
             android:label="@string/product_catalog_name"

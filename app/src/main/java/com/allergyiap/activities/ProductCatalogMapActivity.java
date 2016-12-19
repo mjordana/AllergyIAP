@@ -6,6 +6,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.allergyiap.R;
+import com.allergyiap.entities.AllergyLevelEntity;
+import com.allergyiap.entities.ProductCatalogEntity;
+import com.allergyiap.utils.C;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -19,10 +22,14 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class ProductCatalogMapActivity extends BaseActivity implements OnMapReadyCallback {
     private GoogleMap gMap;
 
+    ProductCatalogEntity prod;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_catalog_map);
+
+        prod = (ProductCatalogEntity) getIntent().getSerializableExtra(C.IntentExtra.Sender.VAR_PRODUCT);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -40,6 +47,8 @@ public class ProductCatalogMapActivity extends BaseActivity implements OnMapRead
         mapFragment.getMapAsync(this);
 
 
+        //viewHolder.image.setImageResource(R.drawable.allergy_product);
+
     }
 
     @Override
@@ -47,7 +56,7 @@ public class ProductCatalogMapActivity extends BaseActivity implements OnMapRead
         gMap = googleMap;
         double latitude = 41.618002;
         double longitude = 0.628507;
-        String title = "Farmacia Voltas Trullols";
+        String title = prod.product_name;
         LatLng pos = new LatLng(latitude, longitude);
         Marker marker = gMap.addMarker(new MarkerOptions()
                 .position(pos)
