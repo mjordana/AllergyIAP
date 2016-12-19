@@ -17,9 +17,11 @@ import android.view.ViewGroup;
 
 import com.allergyiap.R;
 import com.allergyiap.adapters.CatalogAdapter;
+import com.allergyiap.entities.AllergyLevelEntity;
 import com.allergyiap.entities.CatalogEntity;
 import com.allergyiap.entities.ProductCatalogEntity;
 import com.allergyiap.services.ProductCatalogProxyClass;
+import com.allergyiap.utils.C;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,7 +70,7 @@ public class ProductsFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        Log.v(TAG + ".onViewCreated", ".");
+        Log.v(TAG, ".onViewCreated");
         super.onViewCreated(view, savedInstanceState);
 
         recyclerView = (RecyclerView) view.findViewById(R.id.scrollableview);
@@ -83,14 +85,14 @@ public class ProductsFragment extends Fragment {
 
     @Override
     public void onStart() {
-        Log.v(TAG + ".onStart", ".");
+        Log.v(TAG ,".onStart");
         super.onStart();
     }
 
     // after Activity.onResume
     @Override
     public void onResume() {
-        Log.v(TAG + ".onResume", ".");
+        Log.v(TAG , ".onResume");
         super.onResume();
     }
 
@@ -98,7 +100,7 @@ public class ProductsFragment extends Fragment {
 
     @Override
     public void onPause() {
-        Log.v(TAG + ".onPause", ".");
+        Log.v(TAG , ".onPause");
         super.onPause();
     }
 
@@ -106,7 +108,7 @@ public class ProductsFragment extends Fragment {
 
     @Override
     public void onStop() {
-        Log.v(TAG + ".onStop", ".");
+        Log.v(TAG, ".onStop");
         super.onStop();
     }
 
@@ -114,7 +116,7 @@ public class ProductsFragment extends Fragment {
 
     @Override
     public void onDestroyView() {
-        Log.v(TAG + "onDestroyView", ".");
+        Log.v(TAG, "onDestroyView");
         super.onDestroyView();
 
         /*if (task_init != null) {
@@ -126,7 +128,7 @@ public class ProductsFragment extends Fragment {
 
     @Override
     public void onDestroy() {
-        Log.v(TAG + ".onDestroy", ".");
+        Log.v(TAG, ".onDestroy");
         super.onDestroy();
     }
 
@@ -150,10 +152,19 @@ public class ProductsFragment extends Fragment {
             @Override
             public void onItemClick(View view, int position, ProductCatalogEntity catalogEntity) {
                 //setContentView(R.layout.product_info);
-                startActivity(new Intent(context, ProductCatalogMapActivity.class));
+
+                showProductInMap(catalogEntity);
 
             }
         });
+    }
+
+    private void showProductInMap(ProductCatalogEntity prod) {
+        Intent intent = new Intent(activity, ProductCatalogMapActivity.class);
+        Bundle b = new Bundle();
+        b.putSerializable(C.IntentExtra.Sender.VAR_PRODUCT, prod);
+        intent.putExtras(b);
+        startActivity(intent);
     }
 
     private class LoadProductsBT extends AsyncTask<Void, Void, List<ProductCatalogEntity>> {
