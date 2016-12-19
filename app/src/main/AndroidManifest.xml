@@ -71,7 +71,20 @@
         <activity
             android:name=".activities.MapAllergyLevelsDetailsActivity"
             android:label="@string/map_level_details"
-            android:configChanges="orientation|screenSize"></activity>
+            android:configChanges="orientation|screenSize"/>
+
+        <activity
+            android:name=".activities.LoginActivity"
+            android:label="@string/login"
+            android:configChanges="orientation|screenSize"/>
+        <activity
+            android:name=".activities.HelpActivity"
+            android:label="@string/help"
+            android:configChanges="orientation|screenSize"/>
+        <activity
+            android:name=".activities.SignupActivity"
+            android:label="@string/signup"
+            android:configChanges="orientation|screenSize"/>
     </application>
 
 </manifest>

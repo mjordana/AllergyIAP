@@ -2,6 +2,7 @@ package com.allergyiap.activities;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -17,6 +18,8 @@ import android.view.ViewGroup;
 import com.allergyiap.R;
 import com.allergyiap.adapters.CatalogAdapter;
 import com.allergyiap.entities.CatalogEntity;
+import com.allergyiap.entities.ProductCatalogEntity;
+import com.allergyiap.services.ProductCatalogProxyClass;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,19 +29,19 @@ import java.util.List;
  */
 public class ProductsFragment extends Fragment {
 
-    static final String TAG = "ChatList";
+    static final String TAG = "ProductsFragment";
 
     MainActivity activity;
     Context context;
     RecyclerView recyclerView;
     CatalogAdapter adapter;
 
-    List<CatalogEntity> catalogs = new ArrayList<>();
-    private AsyncTask<Void, Void, Void> task;
+    List<ProductCatalogEntity> catalogs = new ArrayList<>();
+    private AsyncTask<Void, Void, List<ProductCatalogEntity>> task;
 
     private int defaultImage = R.drawable.logo;
 
-    public ProductsFragment(){
+    public ProductsFragment() {
 
     }
 
@@ -127,35 +130,62 @@ public class ProductsFragment extends Fragment {
         super.onDestroy();
     }
 
-    /**
-     * Carga los anuncios de la alerta indicada.
-     */
     private void loadData() {
 
-        //task = new BackgroundTaskSearchCompanies().execute("");
-        //loadAdapter(activity.getChats());
+        task = new LoadProductsBT();
+        task.execute();
     }
 
-    /*private void loadAdapter(final List<ChatEntity> list) {
-        Log.d(TAG,".loadAdapter");
+    private void loadAdapter(final List<ProductCatalogEntity> list) {
+        Log.d(TAG, ".loadAdapter");
 
         if (adapter == null)
-            adapter = new ChatRecyclerAdapter(context, list);
+            adapter = new CatalogAdapter(context, list);
+        else
+            adapter.setCatalogs(list);
+
         recyclerView.setAdapter(adapter);
-
-        adapter.setOnItemClickListener(new ChatRecyclerAdapter.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(View view, int position, ChatEntity alertEntity) {
-
-            }
+        adapter.setOnItemClickListener(new CatalogAdapter.OnItemClickListener() {
 
             @Override
-            public void onClickDetails(ChatEntity alertEntity) {
-                CommonServices.getInstance(context).hideKeyboard(activity.getSearchView());
+            public void onItemClick(View view, int position, ProductCatalogEntity catalogEntity) {
+                //setContentView(R.layout.product_info);
+                startActivity(new Intent(context, ProductCatalogMapActivity.class));
 
             }
         });
-    }*/
+    }
 
+    private class LoadProductsBT extends AsyncTask<Void, Void, List<ProductCatalogEntity>> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            activity.findViewById(R.id.progress_bar).setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected List<ProductCatalogEntity> doInBackground(Void... params) {
+
+            List<ProductCatalogEntity> prods = new ArrayList<>();
+            try {
+
+                prods = ProductCatalogProxyClass.getProductCatalog();
+            } catch (Exception e) {
+                Log.e(TAG, "LoadAllergiesBT", e);
+            }
+            return prods;
+        }
+
+        @Override
+        protected void onPostExecute(List<ProductCatalogEntity> result) {
+            super.onPostExecute(result);
+
+            activity.findViewById(R.id.progress_bar).setVisibility(View.GONE);
+
+            if(result != null && !result.isEmpty())
+                catalogs = result;
+            loadAdapter(catalogs);
+        }
+    }
 }

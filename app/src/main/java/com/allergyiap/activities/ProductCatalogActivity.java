@@ -69,7 +69,7 @@ public class ProductCatalogActivity extends BaseActivity {
     private void loadAdapter(final List<CatalogEntity> list) {
         Log.d(TAG, ".loadAdapter");
 
-        if (adapter == null)
+        /*if (adapter == null)
             adapter = new CatalogAdapter(context, list);
         else
             adapter.setCatalogs(list);
@@ -83,7 +83,7 @@ public class ProductCatalogActivity extends BaseActivity {
                 startActivity(new Intent(context, ProductCatalogMapActivity.class));
 
             }
-        });
+        });*/
     }
 
     private class LoadAllergiesBT extends AsyncTask<Void, Void, Void> {

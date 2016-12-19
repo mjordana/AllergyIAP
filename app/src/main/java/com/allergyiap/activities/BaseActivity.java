@@ -37,15 +37,15 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         try {
             Log.d("TESTE10", "STARTING");
-            List<?> l=AllergyLevelProxyClass.getLevels(AllergyLevelProxyClass.getStations().get(0).id);
-            Log.d("TESTE10", String.valueOf(l.size()));
+            //List<?> l=AllergyLevelProxyClass.getLevels(AllergyLevelProxyClass.getStations().get(0).id);
+            //Log.d("TESTE10", String.valueOf(l.size()));
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         updateLocale();
-        if (getSupportActionBar() != null)
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //if (getSupportActionBar() != null)
+        //    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // transparent toolbar android
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
