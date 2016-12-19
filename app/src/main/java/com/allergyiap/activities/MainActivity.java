@@ -5,10 +5,14 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.SearchView;
+import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.widget.ShareActionProvider;
 import android.util.Log;
@@ -21,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.allergyiap.R;
+import com.allergyiap.adapters.ViewPagerAdapter;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -30,9 +35,13 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     private static final String TAG = "MainActivity";
+
+    private ViewPager viewPager;
+    private TabLayout tabLayout;
+    private Toolbar toolbar;
 
     private ShareActionProvider mShareActionProvider;
     private GoogleMap mMap;
@@ -42,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        initLinearLayouts();
+        /*initLinearLayouts();
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView)
                 findViewById(R.id.bottom_navigation);
@@ -84,7 +93,17 @@ public class MainActivity extends AppCompatActivity {
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(pos));
                 textView.setText("Lleida");
             }
-        });
+        });*/
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        viewPager = (ViewPager) findViewById(R.id.container);
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(viewPager);
+
+        setupViewPager();
+
     }
 
     @Override
@@ -145,5 +164,22 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickConfiguration(View v) {
         startActivity(new Intent(this, ConfigurationActivity.class));
+    }
+
+    private void setupViewPager() {
+        Log.v(TAG, ".setupViewPager");
+
+        viewPager.removeAllViews();
+        viewPager.removeAllViewsInLayout();
+        //mViewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
+
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+
+        adapter.addFrag(new com.allergyiap.activities.MapFragment(), getString(R.string.menu_map));
+        adapter.addFrag(new ProductsFragment(), getString(R.string.menu_product));
+
+        viewPager.setAdapter(adapter);
+
+        //initTabs();
     }
 }
