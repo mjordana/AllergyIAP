@@ -9,10 +9,13 @@ import android.view.MenuItem;
 import android.view.WindowManager;
 
 import com.allergyiap.R;
+import com.allergyiap.entities.StationEntity;
+import com.allergyiap.services.AllergyLevelProxyClass;
 import com.allergyiap.utils.C;
 import com.allergyiap.utils.DBHelper;
 import com.allergyiap.utils.Prefs;
 
+import java.util.List;
 import java.util.Locale;
 
 /**
@@ -31,6 +34,14 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         context = getApplicationContext();
         db = DBHelper.getDBHelper(context);
+
+        try {
+            Log.d("TESTE10", "STARTING");
+            List<?> l=AllergyLevelProxyClass.getLevels(AllergyLevelProxyClass.getStations().get(0).id);
+            Log.d("TESTE10", String.valueOf(l.size()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         updateLocale();
         if (getSupportActionBar() != null)

@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.allergyiap.R;
+import com.allergyiap.utils.DBHelper;
 
 /**
  * Working like a preloader
