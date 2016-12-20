@@ -5,6 +5,7 @@ import android.content.Context;
 import com.allergyiap.entities.AllergyLevelEntity;
 import com.allergyiap.entities.CustomerEntity;
 import com.allergyiap.entities.StationEntity;
+import com.allergyiap.utils.C;
 import com.allergyiap.utils.DBHelper;
 import com.allergyiap.utils.Util;
 
@@ -26,9 +27,12 @@ public class CustomerProxyClass {
 
         if (!db.getLastUpdate("customer", 7)) {
             // update it
-            InputStream s = null;
-            s = context.getAssets().open("customers.json");
-            String jsonLevels = Util.convertStreamToString(s);
+            String jsonLevels = "";
+            if (C.Network.useNetwork) {
+                jsonLevels = Util.getUrl(C.Network.WS_URL + "/rest/allergyws/customers");
+            } else {
+                jsonLevels = Util.getJson("customers.json");
+            }
 
             JSONArray jsonObj = new JSONArray(jsonLevels);
             for (int i = 0; i < jsonObj.length(); i++) {
