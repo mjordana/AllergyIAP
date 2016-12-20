@@ -43,7 +43,23 @@ public class AllergiesAdapter extends RecyclerView.Adapter<AllergiesAdapter.Alle
 
         viewHolder.allergyEntity = allergy;
         viewHolder.name.setText(allergy.allergy_name);
-        viewHolder.status.setText(allergy.forecast_level);
+
+        String text = "";
+
+        if(allergy.forecast_level != null){
+            /**
+             * <value en="Increase">A</value>
+             <value en="Stable">=</value>
+             <value en="Decrease">D</value>
+             <value en="Attention">!</value>
+             */
+            if(allergy.forecast_level.equals("A")) text = "Increase";
+            if(allergy.forecast_level.equals("=")) text = "Stable";
+            if(allergy.forecast_level.equals("D")) text = "Decrease";
+            if(allergy.forecast_level.equals("!")) text = "Attention";
+        }
+        viewHolder.status.setText(text);
+
         int resource = 0;
         switch(Integer.parseInt(allergy.current_level)){
             case 0 : resource = R.drawable.legend_level_allergy_null; break;

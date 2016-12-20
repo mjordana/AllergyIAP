@@ -299,11 +299,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
                 stores = result;
                 for (CustomerEntity c : stores) {
 
-                    Log.d(TAG, c.pharmacy_location);
-
                     String[] position = String.valueOf(c.pharmacy_location).split(";");
 
-                    createMarker(Double.valueOf(position[0]), Double.valueOf(position[0]), c.company_name, BitmapDescriptorFactory.HUE_RED);
+                    createMarker(Double.valueOf(position[0]), Double.valueOf(position[1]), c.company_name, BitmapDescriptorFactory.HUE_RED);
                     //customers.put(m.getId(), c);
                     //markers.put(c.idcustomer, m);
                 }
