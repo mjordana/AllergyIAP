@@ -162,7 +162,7 @@ public class D {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 
         //android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(v.getContext(), R.style.AlertsTheme);
-        builder.setTitle(R.string.dialog_week_days_title);
+        builder.setTitle(R.string.dialog_allergies_title);
         builder.setMultiChoiceItems(allergies, selecteds,
                 new DialogInterface.OnMultiChoiceClickListener() {
 

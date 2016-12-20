@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.allergyiap.entities.AllergyLevelEntity;
 import com.allergyiap.entities.StationEntity;
+import com.allergyiap.utils.C;
 import com.allergyiap.utils.DBHelper;
 import com.allergyiap.utils.Util;
 
@@ -49,8 +50,12 @@ public class AllergyLevelProxyClass {
         DBHelper db = DBHelper.getDBHelper(context);
         JSONArray t = db.getQuery("SELECT allergy_level.*,allergy.allergy_name AS allergy_name FROM allergy_level INNER JOIN allergy ON allergy.idallergy = allergy_level.allergy_idallergy INNER JOIN stations ON stations.name = allergy_level.station WHERE stations.id=" + stationString + " AND date_start <= DATE('NOW') AND DATE('NOW') <= date_end ");
         if (t.length() == 0) {
-            String jsonLevels = Util.getJson("levels.json");
-            //String jsonLevels = Util.getUrl("http://10.0.2.2:8080/AllergyIAPWS/XarxaImportServlet");
+            String jsonLevels = "";
+            if (C.Network.useNetwork) {
+                jsonLevels = Util.getUrl(C.Network.WS_URL + "/XarxaImportServlet");
+            } else {
+                jsonLevels = Util.getJson("levels.json");
+            }
             JSONArray jsonObj = new JSONArray(jsonLevels);
             for (int i = 0; i < jsonObj.length(); i++) {
                 JSONObject keyValue = jsonObj.getJSONObject(i);

@@ -12,6 +12,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.CursorAdapter;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -53,16 +54,9 @@ public class MainActivity extends BaseActivity {
     private TextView[] tabLabels;
     private Integer[] countBadges;
 
-
-    private ShareActionProvider mShareActionProvider;
-    private GoogleMap mMap;
-
     private SimpleCursorAdapter mAdapter;
     private SearchView searchView;
-
-    public View getSearchView() {
-        return this.searchView;
-    }
+    private MenuItem searchItem;
 
 
     @Override
@@ -123,6 +117,15 @@ public class MainActivity extends BaseActivity {
 
         setupViewPager();
 
+        final String[] from = new String[]{"cityName"};
+        final int[] to = new int[]{android.R.id.text1};
+        mAdapter = new SimpleCursorAdapter(context,
+                android.R.layout.simple_list_item_1,
+                null,
+                from,
+                to,
+                CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
+
     }
 
     @Override
@@ -133,7 +136,7 @@ public class MainActivity extends BaseActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         //getMenuInflater().inflate(R.menu.menu_map, menu);
 
-        MenuItem searchItem = menu.findItem(R.id.menu_search);
+        searchItem = menu.findItem(R.id.menu_search);
         searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
         searchView.setQueryHint(getString(R.string.menu_search));
         searchView.setSuggestionsAdapter(mAdapter);
@@ -256,6 +259,13 @@ public class MainActivity extends BaseActivity {
 
                 viewPager.setCurrentItem(tab.getPosition());
                 tabLabels[tab.getPosition()].setTextColor(getResources().getColor(R.color.colorAccent));
+
+                if(tab.getPosition() == 1){ //Product tab
+                    searchItem.setVisible(false);
+                } else{
+
+                    searchItem.setVisible(true);
+                }
             }
 
             @Override
